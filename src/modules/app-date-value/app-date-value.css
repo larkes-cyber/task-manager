@@ -1,0 +1,13 @@
+@font-face {
+	font-family: 'Spartan'; 
+	src: url('../../shrifts/Spartan.ttf') 
+}
+.dateMyList{
+    font-family: Spartan;
+    font-style: normal;
+    font-weight: 550;
+    font-size: 40px;
+    line-height: 54px;
+    margin-top: 8%;
+    color: #000000;
+}

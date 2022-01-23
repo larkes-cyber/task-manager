@@ -1,0 +1,73 @@
+@font-face {
+	font-family: 'Consolas'; 
+	src: url('../../shrifts/consolas.ttf') 
+}
+.blockStatistic{
+    width: 350px;
+    border-radius: 5px;
+    padding: 2% 2% 2% 2%;
+    margin-top: 7%;
+    margin-left: 8%;
+    font-family: Consolas;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 140%;
+    color: #000000;
+    background: #FAFAFA;
+    border-radius: 6px;
+}
+.blockGreen{
+    box-shadow: 4px 6px 7px #4BBF89;
+    width: 280px;
+}
+.blockOrange{
+    box-shadow: 4px 6px 7px #EE05F2;
+    width: 270px;
+    margin-left: 6%;
+}
+.blockBlue{
+    box-shadow: 4px 6px 7px #41AED9;
+    width: 210px;
+    margin-top: 5%;
+}
+.baseStatic{
+    display: flex;
+    flex-direction: row;
+  
+}
+.bloksStatic{
+    width: 1000px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 10%;
+    
+}
+.imgStatic{
+    margin-left: 15%;
+    margin-top: 3%;
+}
+.stata{
+    width:100px;
+    height: 100px;
+}
+.contain{
+    height: 600px;
+    width: 600px;
+    margin-left: 20%;
+    margin-top: 8%;
+}
+.wallForStat{
+    background-color: white;
+    background: url('../app-goal-value/img/wallpaper.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.containSec{
+    height: 600px;
+    width: 600px;
+    margin-left: 20%;
+    margin-top: 8%;
+}

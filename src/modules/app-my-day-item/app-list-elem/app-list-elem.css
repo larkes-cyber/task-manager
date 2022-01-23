@@ -1,0 +1,24 @@
+@font-face {
+	font-family: 'Consolas'; 
+	src: url('../../../shrifts/consolas.ttf');
+}
+.blockWithTextAndIcon{
+    display: flex;
+    flex-direction: row;
+    margin-left: 12%;
+    margin-top: 8%;
+    
+}
+.list-elem-text{
+    margin-left: 3%;
+    font-family: Consolas;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+}
+.imgOkMyDays{
+    margin-top: -4%;
+    width: 15%;
+}
