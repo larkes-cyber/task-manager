@@ -6,6 +6,7 @@ import ImgOk from '../app-goal-value/img/compl.png';
 import plusDay from '../app-goal-value/img/addBut2.png';
 import AddDayForm from '../app-add-day-form/app-add-day-form';
 import priorBut from '../app-goal-value/img/priorBut.png';
+import MainGoals from '../main-goals-app/main-goals-app';
 class MyDays extends Component{
     constructor(props){
         super(props);
@@ -106,9 +107,11 @@ class MyDays extends Component{
                         </div>  
                        </div>
                     </div>
+                    {this.props.flagMain?<div className='slideMainGoals'><MainGoals fix={true}/></div>:null}
+ 
                 </div>
             )
-        }
+        }//      {props.flagMain?<div className='slideMainGoals'><MainGoals fix={true}/></div>:null}
  
     }
 }

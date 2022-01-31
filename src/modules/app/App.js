@@ -7,6 +7,7 @@ import Statistic from '../app-statistic/app-statistic';
 import Header from '../app-header-bar/app-header';
 import React, {Component} from 'react';
 import NextDay from '../app-my-next-day/app-my-day';
+import MainGoals from '../main-goals-app/main-goals-app';
 class App extends Component{
   constructor(props){
     super(props);
@@ -14,7 +15,9 @@ class App extends Component{
       page:'today',
       data:(localStorage.getItem('data')!=null)?JSON.parse(localStorage.getItem('data')):[],
       date:'',
-      visibleHead:true
+      visibleHead:true,
+      flagMain:false,
+      flagMainHide:false
 
       }
     }//JSON.parse(localStorage.getItem('data'))(localStorage.getItem('data')!=null)?JSON.parse(localStorage.getItem('data')):[]
@@ -125,6 +128,19 @@ class App extends Component{
       })
       localStorage.setItem('data',JSON.stringify(this.state.data));
       console.log(JSON.parse(localStorage.getItem('data')))
+     
+      let mainGoals=JSON.parse(localStorage.getItem('mainGoals'));
+      let array=mainGoals.filter(item=>+item.id===+copyArray[0].branch)[0];
+      console.log(array)
+      array.count+=1;
+  
+      mainGoals.forEach((item,i)=>{
+        if(+item.id===+copyArray[0].branch){
+          mainGoals[i]=array;
+        }
+      })
+      console.log(mainGoals);
+      this.onChangeMainGoals(mainGoals)
     }
     if(whoBut=='del'){
      copyDay[0].goals.splice(indexGoal,1);
@@ -142,13 +158,28 @@ class App extends Component{
     } 
   
   }
+  onChangeMainGoals=(data)=>{
+    localStorage.setItem('mainGoals',JSON.stringify(data));
+    this.setState(state=>({
+      flagMain:!state.flagMain
+    }))
+  }
+  onChangeMainGoalsState=()=>{
+ 
+    
+  }
   openPage=(data)=>{
     this.setState({
       date:data,
       page:'random'
     })
   }
-  onLoadPage=(page)=>{
+  onOffOrTurnMainComponent=()=>{
+    this.setState({
+      flagMainHide:!this.state.flagMainHide
+    })
+  }
+  onLoadPage=(page,flagMainHide)=>{
     if(page==='random'){
       return (
         <>
@@ -170,7 +201,7 @@ class App extends Component{
     if(page==='today'){
       return (
         <>
-           {this.state.visibleHead?<Header name="Today"/>:null}
+           {this.state.visibleHead?<Header name="Today" onOffOrTurnMainComponent={this.onOffOrTurnMainComponent}/>:null}
            <MyDay checkPage={this.checkPage} 
            onComplite={this.onComplite} 
            data={this.state.data} 
@@ -178,6 +209,7 @@ class App extends Component{
            buttonAdd={this.buttonAdd}
            flag={false}
            onVisibleHead={this.onVisibleHead}
+           flagMain={flagMainHide}
            />
         </>
       
@@ -194,7 +226,7 @@ class App extends Component{
     if(page==='nextDay'){
       return(
         <>
-          {this.state.visibleHead?<Header name="Next day"/>:null}
+          {this.state.visibleHead?<Header name="Next day" onOffOrTurnMainComponent={this.onOffOrTurnMainComponent}/>:null}
           <NextDay checkPage={this.checkPage} 
           data={this.state.data} 
           uploadDataState={this.uploadDataState} 
@@ -202,6 +234,7 @@ class App extends Component{
           flag={false}
           buttonAdd={this.buttonAdd}
           onVisibleHead={this.onVisibleHead}
+          flagMain={flagMainHide}
           />
       </>
       )
@@ -223,9 +256,11 @@ class App extends Component{
  
   render(){
     console.log(localStorage.getItem('data')==null)
+
     return (
       <div className='globalApp'>
-         {this.onLoadPage(this.state.page)}
+         {this.onLoadPage(this.state.page,this.state.flagMainHide)}
+      
       </div>
   ); 
 }

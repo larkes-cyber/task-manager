@@ -4,6 +4,8 @@ import priorBut from '../app-goal-value/img/priorBut.png';
 import butUp from '../app-goal-value/img/butUp.png';
 import butDown from '../app-goal-value/img/butDown.png';
 import butCancel from '../app-goal-value/img/cancel.png';
+import branch from '../app-goal-value/img/branch.png';
+import { LogarithmicScale } from 'chart.js';
 class AddDayForm extends Component{
     constructor(props){
         super(props);
@@ -15,7 +17,9 @@ class AddDayForm extends Component{
             flag:0,
             goal:{value:'Ваша цель'},
             date:{value:'00:00'},
-            errorOn:false
+            errorOn:false,
+            flagListGoals:true,
+            flagStat:true
 
         }
     }
@@ -92,6 +96,7 @@ class AddDayForm extends Component{
                         const forms=item.childNodes;
                         let goal='';
                         let date='';
+                        let branch='';
                         let flag=false;
                         forms.forEach(item=>{
                                 if(item.classList.contains('date')){
@@ -102,6 +107,9 @@ class AddDayForm extends Component{
                                 }
                                 if(item.getAttribute('active')==='unpassive'){
                                     flag=true;
+                                }
+                                if(item.classList.contains('kostily')){
+                                    branch=item.getAttribute('data-keyGoal');
                                 }
                             })
                             if(!(date.length===0 && goal.length===1)){  
@@ -132,9 +140,11 @@ class AddDayForm extends Component{
                                         goals.push({
                                             goal:date+goal,
                                             priority:flag,
-                                            status:false
+                                            status:false,
+                                            branch:branch
                                         })
                                     }
+                                    
                                 }
                             }
                         }) 
@@ -265,8 +275,80 @@ class AddDayForm extends Component{
         }
        // const elem=e.target.getAttribute('active')e.target.setAttribute('active','unpassive');
     }
+    activeBranch=(e)=>{
+         const elem=e.target.parentNode.childNodes[1];
+        if(elem.classList.contains('hideBranch')&&this.state.flagListGoals){
+            e.target.parentNode.childNodes[1].className='listMainGoals downBranch';
+            this.setState(state=>({
+                flagListGoals:false
+            }))
+            e.target.parentNode.childNodes[1].childNodes.forEach(item=>{
+                item.childNodes[0].checked=false;
+            })
+            return; 
+        }
+        elem.className+=' hideBranch';
+        this.setState(state=>({
+            flagListGoals:true
+        }))
+    }
+    sumbitBranch=(e)=>{
+        const elem=e.currentTarget;
+        let check='';
+        elem.parentNode.childNodes.forEach(item=>{
+            if(item.childNodes[0].checked){
+                check=item.childNodes[0].getAttribute('data-id');
+            }
+        })
+        elem.parentNode.parentNode.parentNode.setAttribute('data-keyGoal',`${check}`);
+        console.log(elem.parentNode.parentNode.parentNode.getAttribute('data-keyGoal'))
+        elem.parentNode.parentNode.className+=' hideBranch';
+        console.log(elem.parentNode.parentNode.className)
+            this.setState(state=>({
+                flagListGoals:true
+            }))
+        // console.log(elem.parentNode.parentNode.parentNode.getAttribute('data-keyGoal'));
+        // if(elem.classList.contains('hideBranchSec')&&this.state.flagListGoals){
+        //     elem.parentNode.parentNode.childNodes[1].className='listMainGoals';
+     
+        //     return; 
+        // }
+        // if(elem.classList.contains('hideBranch')&&this.state.flagListGoals){
+        //     e.target.parentNode.childNodes[1].className='listMainGoals';
+        //     this.setState(state=>({
+        //         flagListGoals:false
+        //     }))
+        //     return; 
+        // }
+    }
+    changeRadio=(e)=>{
+        e.target.parentNode.parentNode.childNodes.forEach(item=>{
+            item.childNodes[0].checked=false
+        })
+        e.target.checked=true;
+    }
     render(){
         const arrForms=[];
+        const branchNodes=(localStorage.getItem('mainGoals')!=null)?JSON.parse(localStorage.getItem('mainGoals')):[]
+        let arrayMainGoals=[]
+              branchNodes.forEach(elem=>{
+                  const id= elem.id,
+                  goal=elem.goal;
+                  arrayMainGoals.push({
+                        goal:goal,
+                        id:id
+                  })
+              })
+             
+              console.log(arrayMainGoals)
+              arrayMainGoals=arrayMainGoals.map(item=>(
+                // arrayMainGoals.push({id:0,goal:'default'});
+                <div className='mainBlockGoals'  onClick={this.changeRadio}>
+                    <input type="checkbox" id="contactChoice1" name="contact" data-id={item.id}/>
+                    <p className='mainGoalChoice'>{item.goal}</p>
+                </div>
+              ))
+              
         for(let i=0;i<this.state.count;i++){
             if(i==0 && this.state.flag<2){
                 arrForms.push(
@@ -274,6 +356,24 @@ class AddDayForm extends Component{
                         <img src={priorBut} data-change='prior' onClick={this.onChangePriority} alt="" data-active='passive' className="ping passive"/>
                         <input type="text" className="date stText" {...this.state.date} onClick={this.changeStVal}/>
                         <input type="text" className="goal stText" {...this.state.goal} onClick={this.changeStVal}/>
+                        <div className='kostily'>
+                         <img src={branch} className='brnImg' onClick={this.activeBranch} alt="" />
+                         <div className='listMainGoals hideBranch'>
+                            <h1 className='titleSpanMainGoal' >Classificate goal:</h1>
+                            <div className='innerListMainGoals'>
+                               {arrayMainGoals}
+                               <div className='mainBlockGoals'>
+                                    <input type="checkbox" id="contactChoice1" name="contact" data-id='0'  />
+                                    <p className='mainGoalChoice'>default</p>
+                                </div>
+                               <div className='butAddBrain' onClick={this.sumbitBranch}>
+                                   <p className='textButAddBrain'>OK</p>
+                               </div>
+                            </div> 
+                            {/* <p onClick={this.changeRadio}>as das as ad as </p>
+                            <div onClick={this.changeRadio}>as das as ad as </div> */}
+                         </div>
+                        </div>
                     </form>
                 );
             }
@@ -283,6 +383,25 @@ class AddDayForm extends Component{
                         <img src={priorBut} data-change='prior' onClick={this.onChangePriority} alt="" data-active='passive' className="ping passive"/>
                         <input type="text" className="date"/>
                         <input type="text" className="goal"/>
+                        <div className='kostily'>
+                         <img src={branch} className='brnImg' onClick={this.activeBranch} alt="" />
+                         <div className='listMainGoals hideBranch'>
+                            <h1 className='titleSpanMainGoal'>Classificate goal:</h1>
+                            <div className='innerListMainGoals' >
+                               {arrayMainGoals}
+                               <div className='mainBlockGoals'>
+                                    <input type="checkbox" id="contactChoice1" name="contact" data-id='0' onClick={this.changeRadio} />
+                                    <p className='mainGoalChoice'>default</p>
+                                </div>
+                               <div className='butAddBrain' onClick={this.sumbitBranch}>
+                                   <p className='textButAddBrain'>OK</p>
+                               </div>
+                            
+                            </div>
+                            {/* <p onClick={this.changeRadio}>as das as ad as </p>
+                            <div onClick={this.changeRadio}>as das as ad as </div> */}
+                         </div>
+                        </div>
                     </form>
                 );
             }

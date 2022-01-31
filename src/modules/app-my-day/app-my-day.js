@@ -2,7 +2,10 @@ import './app-my-day.css';
 import NavBar from '../app-nav-bar/app-nav-bar';
 import ListGoals from '../app-list-goals/app-list-goals';
 import AddPage from '../app-add-page/app-add-page';
+import MainGoals from '../main-goals-app/main-goals-app';
+
  function MyDay(props) {
+
   const onAttue=(e)=>{
     return e.target.getAttribute('data-page');
   }
@@ -35,6 +38,7 @@ import AddPage from '../app-add-page/app-add-page';
       onComplite={props.onComplite}
       day={date}
       onVisibleHead={()=>props.onVisibleHead()}
+      flagMain={props.flagMain}
       />
         )
   }////<AddPage checkPage={this.checkPage} uploadDataState={this.uploadDataState}/>   
@@ -43,12 +47,17 @@ import AddPage from '../app-add-page/app-add-page';
     return (
       <div className="App">
         <div className="appMain">
-          <NavBar checkAttue={(e)=>props.checkPage(onAttue(e))}/>
-            <div className="butAndList">
-              <ListGoals data={data} flag={data[0].flag} onComplite={props.onComplite} buttonAdd={(data)=>props.buttonAdd(data)} nextFlag={props.nextFlag}/>
-              <button className='butRem' onClick={setDay}>remove</button>
-            </div>
+          <div className='part'>
+              <NavBar checkAttue={(e)=>props.checkPage(onAttue(e))}/>
+              <div className="butAndList">
+                <ListGoals data={data} flag={data[0].flag} onComplite={props.onComplite} buttonAdd={(data)=>props.buttonAdd(data)} nextFlag={props.nextFlag}/>
+                <button className='butRem' onClick={setDay}>remove</button> 
+              </div>
+          </div>
+          {props.flagMain?<div className='slideMainGoals'><MainGoals fix={true}/></div>:null}
+          
         </div>
+       
       </div>
     );
   }

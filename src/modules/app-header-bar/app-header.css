@@ -16,5 +16,19 @@
     padding-top: 1%;
     padding-left: 45%;
     position: relative;
-    z-index: 1;
+    z-index: 6;
+    display: flex;
+    flex-direction: row;
+}
+.burger{
+    width: 75px;
+    height: 75px;
+    margin-top: 0%;
+    margin-left: 35%;
+    
+}
+:hover.burger{
+    cursor: pointer;
+    width: 76px;
+    height: 76px;
 }

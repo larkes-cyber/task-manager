@@ -4,6 +4,8 @@ import AppNav from '../app-nav-bar/app-nav-bar';
 import AddButForm from '../app-add-button/app-add-button';
 import AddDayForm from '../app-add-day-form/app-add-day-form';
 import Plns from '../app-goal-value/img/plans.png';
+import MainGoals from '../main-goals-app/main-goals-app';
+
 class AddPage extends Component{
     constructor(props){
         super(props);
@@ -44,6 +46,7 @@ class AddPage extends Component{
             return(
                 <div>
                     <div className="appMain">
+                    <div className='part'>
                         <AppNav checkAttue={(e)=>{this.props.checkPage(this.onAttue(e))}}/>
                         <div className='fixNavAdd'>
                             <div className='together'>
@@ -52,6 +55,8 @@ class AddPage extends Component{
                                 <AddButForm onVisibleHead={()=>this.props.onVisibleHead()} changeState={this.onChangeFlag}/>
                             </div>
                         </div>
+                    </div>
+                    {this.props.flagMain?<div className='slideMainGoals'><MainGoals/></div>:null}
                     </div>
                 </div>
             )

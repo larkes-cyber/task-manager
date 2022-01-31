@@ -95,9 +95,9 @@ class ListGoals extends Component{
                 </form>
             )//delite ||this.props.nextFlag "ok"
         }
-        const goals=this.props.data[0].goals.map(({goal,status,priority})=>{
+        const goals=this.props.data[0].goals.map(({goal,status,priority,branch})=>{
                 return(
-                    <div className="elem">
+                    <div className="elem" branch={branch}>
                     {status?<img className={status?'complite':'hide'} src={compl} alt=""/>: <img src={butPrior} className={priority?'priorBut':'priorBut hide'} alt="" />}
                     <div className={status?'text compliteElem'
                     :priority?'priorityElem text':'text'}>

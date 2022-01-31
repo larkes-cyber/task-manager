@@ -120,42 +120,23 @@ class Statistic extends Component{
             ctxsec.canvas.style.width="100px";
             ctxsec.canvas.style.height="100px";
             const myChartsec = new Chart(ctxsec, {
-                type: 'polarArea',
-                data : {
-                    datasets: [{
-                        data: [5,4,3,8,6,10,2],
-                        backgroundColor: ["#19C70E", "#A0E01B","#EE05F2","#8200FF","#FF173C","#05FCFF","#05FFAB"]
-                    }],
-                
-                    // These labels appear in the legend and in the tooltips when hovering different arcs
-                    labels: [
-                        'Monday',
-                        'Tuesday',
-                        'Wednesday',
-                        'Thursday',
-                        'Friday',
-                        'Saturday',
-                        'Sunday'
-                    ]
-                }
-                // type: 'bar',
-                // data: {
-                //   labels: ["10:00", "11:00", "12:00", "13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"],
-                //   datasets: [
-                //     {
-                //       label: "Population (millions)",
-                //       backgroundColor: ["#FDBBFD", "#871BE3","#871BE3","#1B63E3","#FDBBFD","#1B63E3", "#1B63E3","#3C2AFA","#1ED0FD","#1ED0FD","#FDBBFD", "#1ED0FD","#1ED0FD","#FDBBFD"],
-                //       data: [5,2,2,8,3,12,13,15,3,7,6,3]
-                //     }
-                //   ]
-                // },
-                // options: {
-                //   legend: { display: false },
-                //   title: {
-                //     display: true,
-                //     text: 'Predicted world population (millions) in 2050'
-                //   }
-                // }
+                type: 'line',
+  data: {
+    labels: ['19.01.22','20.01.22','21.01.22','22.01.22','23.01.22','24.01.22','25.01.22','26.01.22'],
+    datasets: [{ 
+        data: [1,2,4,3,2,6,9,2],
+        label: "Complited goals for it",
+        borderColor: "#EE05F2",
+        fill: false
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'World population per region (in millions)'
+    }
+  }
 
         } );
         myChartes.style.width="100px";

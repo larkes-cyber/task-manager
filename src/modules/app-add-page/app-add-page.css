@@ -47,18 +47,22 @@
     font-size: 34px;
     line-height: 47px;
     margin-top: -1%;
-    margin-left: 5%;
+    margin-left: 12%;
     color: #050101;
+  
   }
   .plns{
     width: 540px;
 height: 400.54px;
+
   }
   .together{
-    margin-top: 7%;
-    /* margin-left: auto; */
+    display: flex;
+    margin-top: 19%;
+    margin-left: 26%;
     height: 150%;
-    /* padding-left:auto; */
+  
+    width: 500px;
   }
   .fixNavAdd{
     /* display: flex;
