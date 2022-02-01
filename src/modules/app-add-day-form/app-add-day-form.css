@@ -383,3 +383,7 @@ animation-fill-mode: forwards;
     cursor: pointer;
     border-radius: 12px;
 }
+.dateError{
+    margin-top: 6%;
+    margin-left: -6%;
+}

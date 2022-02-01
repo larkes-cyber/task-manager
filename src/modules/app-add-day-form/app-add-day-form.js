@@ -37,6 +37,12 @@ class AddDayForm extends Component{
             error.className+=' repError';
             return error;
         }
+        if(err==='date'){
+            error.textContent="Incorrect date";
+            error.className='Error';
+            error.className+=' dateError';
+            return error;
+        }
          error.className='Error';
          return error;//repError
     }
@@ -82,13 +88,47 @@ class AddDayForm extends Component{
         })
         return flag;
     }
+    onCheckRealDate=(date)=>{
+        console.log('check',date)
+        if(date.length!==8) return false;
+        let flag=true;
+        let flagNoRange=true;
+        let flagRealDate=true;
+        for(let i = 0; i < date.lenght; i++){
+            let item=date[i];
+            if(!(isNaN(item)||item==='.')){
+                flag=false;
+            }
+        }
+        let count=0;
+        for(let i = 2; i < date.length; i++){
+            if(date[i]==='.'){
+                count++;
+                const num= +(date[i-2]+date[i-1]);
+                flagNoRange=num>31||num<1;
+                if(count==2){
+                    console.log(num)
+                }
+                flagNoRange=count==2?num<=12&&num>=1:flagNoRange;
+                if(!(date[i-1]!=='.'&&date[i-2]!=='.')){
+                    flagNoRange=false;
+                }
+            }
+        }
+        flagNoRange=(count===2)&&(flagNoRange);
+        console.log('check',flag,flagNoRange)
+        return flag&&flagNoRange;
+    }
     onCheckDataForm=(e)=>{
         this.props.onVisibleHead();
         const elems=e.target.parentElement.childNodes;
+        const forDate=e.target.parentElement.parentElement.childNodes[0].childNodes[1].value;
         let goals=[];
         let errorFlag=true;
         let errorTime=true,
-            errrorEmpInp=true;
+            errrorEmpInp=true,
+            errorDate=this.onCheckRealDate(forDate);
+        console.log('lolka',forDate)
         elems.forEach(item => {
             console.log(item)
             if(item.classList.contains('listGoals')){
@@ -151,8 +191,12 @@ class AddDayForm extends Component{
             }
 
         });
+
         if(!(errrorEmpInp && errorTime)){
             errorFlag=false;
+        }
+        if(!errorDate){
+            errorFlag=true;
         }
         else{
             errorFlag=true;
@@ -160,42 +204,53 @@ class AddDayForm extends Component{
         if(errorFlag){
             const elemsData=e.target.parentElement.parentElement.firstChild.childNodes;
             let dateInput='';
-            console.log(elemsData)
-            elemsData.forEach(item=>{
-                if(item.classList.contains('inpur')){
-                    dateInput=item.value;
+            const elem=e.target.parentElement.parentElement.firstChild;
+            if(!errorDate){
+                if(!elem.classList.contains('withError')){
+                    elem.append(this.addError('date'));
+                    elem.className+=' withError';
                 }
-            })
-            //console.log([goals,dateInput])
-            const provArr=goals;
-            let book=new Set();
-            let flagRepit=true;
-            console.log(provArr)
-            for (let index = 0; index < provArr.length; index++) {
-                const item=provArr[index].goal.substr(0,5);
-                console.log(item)
-                if(!(book.has(item))){
-                    book.add(item)
-                }
-                else{
-                    flagRepit=false;
-                }
-            }
-            if(flagRepit){
-                console.log([goals,dateInput])
-                this.props.changeState([goals,dateInput]);
             }
             else{
-                // document.querySelector('.listPlan').forEach(item=>{
-                //     if(item.classList.contains('Error')){
+                if(elem.classList.contains('withError')){
+                    elem.className='addDate';
+                }
+                elemsData.forEach(item=>{
+                    if(item.classList.contains('inpur')){
+                        dateInput=item.value;
+                    }
+                })
+                //console.log([goals,dateInput])
+                const provArr=goals;
+                let book=new Set();
+                let flagRepit=true;
+                console.log(provArr)
+                for (let index = 0; index < provArr.length; index++) {
+                    const item=provArr[index].goal.substr(0,5);
+                    console.log(item)
+                    if(!(book.has(item))){
+                        book.add(item)
+                    }
+                    else{
+                        flagRepit=false;
+                    }
+                }
+                if(flagRepit){
+                    console.log([goals,dateInput])
+                    this.props.changeState([goals,dateInput]);
+                }
+                else{
+                    // document.querySelector('.listPlan').forEach(item=>{
+                    //     if(item.classList.contains('Error')){
 
-                //     }
-                // })isRepidErr
-                const elem=document.querySelector('.listPlan');
-                if(this.isRepidErr(elem)){
-                    elem.append(this.addError('rep'));
-                } 
-            }
+                    //     }
+                    // })isRepidErr
+                    const elem=document.querySelector('.listPlan');
+                    if(this.isRepidErr(elem)){
+                        elem.append(this.addError('rep'));
+                    } 
+                }
+        }
         }
     }
     unHideElem=()=>{

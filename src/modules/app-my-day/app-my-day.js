@@ -12,7 +12,7 @@ import MainGoals from '../main-goals-app/main-goals-app';
   let data=[];
   console.log(props.date)
   let day=''+new Date().getDate();
-  let month=''+new Date().getMonth()+1; 
+  let month=''+(new Date().getMonth()+1); 
   if(day.length===1){
     day='0'+day;
   }
@@ -20,6 +20,7 @@ import MainGoals from '../main-goals-app/main-goals-app';
     month='0'+month;
   }
   const date=`${day}.${month}.22`;
+  console.log(new Date().getDate(),new Date().getMonth()+1)
   //`${new Date().getDate()}.${new Date().getMonth()+1}.22`
   console.log(date)
   props.data.forEach(item => {

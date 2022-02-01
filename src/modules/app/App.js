@@ -130,18 +130,20 @@ class App extends Component{
       console.log(JSON.parse(localStorage.getItem('data')))
      
       let mainGoals=JSON.parse(localStorage.getItem('mainGoals'));
-      let array=mainGoals.filter(item=>+item.id===+copyArray[0].branch)[0];
-      console.log(array)
-      array.count+=1;
-  
-      mainGoals.forEach((item,i)=>{
-        if(+item.id===+copyArray[0].branch){
-          mainGoals[i]=array;
-        }
-      })
-      console.log(mainGoals);
-      this.onChangeMainGoals(mainGoals)
+      console.log(mainGoals)
+      let array=mainGoals!==null?mainGoals.filter(item=>+item.id===+copyArray[0].branch)[0]:[];
+        if(array.length!==0){
+          console.log(array)
+          array.count+=1;
+          mainGoals.forEach((item,i)=>{
+            if(+item.id===+copyArray[0].branch){
+              mainGoals[i]=array;
+            }
+          })
+          console.log(mainGoals);
+          this.onChangeMainGoals(mainGoals)
     }
+  }
     if(whoBut=='del'){
      copyDay[0].goals.splice(indexGoal,1);
      console.log(copyDay[0].goals.length)
