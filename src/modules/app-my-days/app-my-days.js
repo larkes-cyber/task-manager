@@ -1,7 +1,7 @@
 import './app-my-days.css';
 import React, {Component } from 'react';
 import FlipNavBar from '../app-flip-nav-bar/app-flip-nav-bar';
-import DayMyDays from '../app-my-day-item/app-my-days-item';
+// import DayMyDays from '../app-my-day-item/app-my-days-item';
 import ImgOk from '../app-goal-value/img/compl.png';
 import plusDay from '../app-goal-value/img/addBut2.png';
 import AddDayForm from '../app-add-day-form/app-add-day-form';
