@@ -3,7 +3,7 @@ import NavBar from '../app-nav-bar/app-nav-bar';
 import Diagramm from '../app-goal-value/img/diagramma.png';
 import Chart from 'chart.js/auto';
 import React, { Component } from 'react';
-
+import MainGoals from '../main-goals-app/main-goals-app';
 /*
 const myCharts=document.createElement('canvas')
       myCharts.className="stata";
@@ -148,18 +148,21 @@ class Statistic extends Component{
         return(
             <div className='wallForStat'>
                 <div className='baseStatic'>
-                 <NavBar checkAttue={(e)=>this.props.checkPage(this.onAttue(e))}/>
-                    <div>
-                        <div className='bloksStatic'>
-                            <div className='blockStatistic blockGreen'>Goals complited: {this.state.countTotalGoals}</div>
-                            <div className='blockStatistic blockOrange'>Days complited: {this.state.countComplDays}</div>
-                            <div className='blockStatistic blockBlue'>Goals set: {this.state.countSetGoals}</div>
-                        </div>
-                        <div className='contain'>
-                        </div>
-                        <div className='containSec'>
+                    <div className='partWithNavAndStat'>
+                        <NavBar checkAttue={(e)=>this.props.checkPage(this.onAttue(e))}/>
+                        <div>
+                            <div className='bloksStatic'>
+                                <div className='blockStatistic blockGreen'>Goals complited: {this.state.countTotalGoals}</div>
+                                <div className='blockStatistic blockOrange'>Days complited: {this.state.countComplDays}</div>
+                                <div className='blockStatistic blockBlue'>Goals set: {this.state.countSetGoals}</div>
+                            </div>
+                            <div className='contain'>
+                            </div>
+                            <div className='containSec'>
+                            </div>
                         </div>
                     </div>
+                    {this.props.flagMain?<div className='staticMainGoals slideMainGoals'><MainGoals/></div>:null}
                 </div>
                 
     

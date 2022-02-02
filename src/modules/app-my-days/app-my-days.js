@@ -95,7 +95,7 @@ class MyDays extends Component{
         else{
             return(
                 <div className='superBlockMyDays'>
-                    <div>
+                    <div className='mainContent'>
                         <div className={this.state.addForm?'withoutAddDay':''}>
                         <FlipNavBar checkAttue={(e)=>{this.props.checkPage(this.onAttue(e))}}/>
                         <div className='listMyDays'>
@@ -107,8 +107,7 @@ class MyDays extends Component{
                         </div>  
                        </div>
                     </div>
-                    {this.props.flagMain?<div className='slideMainGoals'><MainGoals fix={true}/></div>:null}
- 
+                    {this.props.flagMain?<div className='mainGoalsMyDays slideMainGoals'><MainGoals/></div>:null}
                 </div>
             )
         }//      {props.flagMain?<div className='slideMainGoals'><MainGoals fix={true}/></div>:null}

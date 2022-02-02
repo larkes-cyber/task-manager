@@ -14,7 +14,8 @@
     padding-bottom: 5%;
     overflow-x: hidden;
     background: url('../app-goal-value/img/wallpaper.png');
-
+    display: flex;
+    justify-content: space-between;
 
 
     /*
@@ -171,4 +172,11 @@ box-shadow: 4px 8px 4px rgba(63, 33, 235, 0.25);
 .moreMyDays:hover{
     cursor: pointer;
     text-shadow: 0px 4px 25px yellow;
+}
+.mainContent{
+    width: 100%;
+}
+.mainGoalsMyDays{
+    position: absolute;
+    right: 0%;
 }

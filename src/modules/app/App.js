@@ -220,8 +220,10 @@ class App extends Component{
     if(page==='statistics'){
       return (
         <>
-         {this.state.visibleHead?<Header name="Statistics"/>:null}
-          <Statistic checkPage={this.checkPage}/>
+         {this.state.visibleHead?<Header name="Statistics" onOffOrTurnMainComponent={this.onOffOrTurnMainComponent}/>:null}
+          <Statistic checkPage={this.checkPage}
+            flagMain={flagMainHide}
+          />
         </>
       )
     }
@@ -244,12 +246,13 @@ class App extends Component{
     if(page==='myDays'){
       return(
         <>
-             {this.state.visibleHead?<Header name="My days"/>:null}
+        {this.state.visibleHead?<Header name="My days" onOffOrTurnMainComponent={this.onOffOrTurnMainComponent}/>:null}
         <MyDays checkPage={this.checkPage} 
         data={this.state.data} 
         uploadDataState={this.uploadDataState}
         openPage={this.openPage}
         onVisibleHead={this.onVisibleHead}
+        flagMain={flagMainHide}
         />
        </>
       )

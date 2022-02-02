@@ -33,7 +33,8 @@
 }
 .baseStatic{
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
   
 }
 .bloksStatic{
@@ -70,4 +71,9 @@
     width: 600px;
     margin-left: 20%;
     margin-top: 8%;
+}
+.partWithNavAndStat{
+    display: flex;
+    flex-direction: row;
+    width: 60%;
 }

@@ -3,7 +3,7 @@ import NavBar from '../app-nav-bar/app-nav-bar';
 import ListGoals from '../app-list-goals/app-list-goals';
 import AddPage from '../app-add-page/app-add-page';
 import MainGoals from '../main-goals-app/main-goals-app';
-
+import NotComplitedGoals from '../app-alert-not-compited-goals/app-alert-not-compited-goals';
  function MyDay(props) {
 
   const onAttue=(e)=>{
@@ -47,6 +47,7 @@ import MainGoals from '../main-goals-app/main-goals-app';
     console.log(data)
     return (
       <div className="App">
+      <NotComplitedGoals/>
         <div className="appMain">
           <div className='part'>
               <NavBar checkAttue={(e)=>props.checkPage(onAttue(e))}/>
