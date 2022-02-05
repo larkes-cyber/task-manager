@@ -6,7 +6,7 @@
     width: 350px;
     border-radius: 5px;
     padding: 2% 2% 2% 2%;
-    margin-top: 7%;
+    /* margin-top: 7%; */
     margin-left: 8%;
     font-family: Consolas;
     font-style: normal;
@@ -16,19 +16,20 @@
     color: #000000;
     background: #FAFAFA;
     border-radius: 6px;
+    border: 1px solid #D9D9D9;
 }
 .blockGreen{
     box-shadow: 4px 6px 7px #4BBF89;
-    width: 280px;
+    /* width: 280px; */
 }
 .blockOrange{
     box-shadow: 4px 6px 7px #EE05F2;
-    width: 270px;
+    /* width: 270px; */
     margin-left: 6%;
 }
 .blockBlue{
     box-shadow: 4px 6px 7px #41AED9;
-    width: 210px;
+    /* width: 210px; */
     margin-top: 5%;
 }
 .baseStatic{
@@ -38,11 +39,11 @@
   
 }
 .bloksStatic{
-    width: 1000px;
+    width: 600px;
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    margin-left: 10%;
+
+    /* margin-left: 10%; */
     
 }
 .imgStatic{
@@ -56,8 +57,8 @@
 .contain{
     height: 600px;
     width: 600px;
-    margin-left: 20%;
-    margin-top: 8%;
+    /* margin-left: 20%;
+    margin-top: 8%; */
 }
 .wallForStat{
     background-color: white;
@@ -67,13 +68,174 @@
     background-size: cover;
 }
 .containSec{
-    height: 600px;
-    width: 600px;
-    margin-left: 20%;
-    margin-top: 8%;
+    height: 350px;
+    width: 680px;
+    /* margin-left: 20%;
+    margin-top: 8%; */
 }
 .partWithNavAndStat{
     display: flex;
     flex-direction: row;
     width: 60%;
+}
+.group-btn-static{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin-left: 12%;
+    
+}
+.btn-static{
+    background: #FFFFFF;
+    border: 1px solid #C6C6C6;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(60, 42, 250, 0.25);
+    border-radius: 4px;
+    font-family: Consolas;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 29px;
+    color: #000000;
+    height: 65px;
+    /* padding-left: 7%;
+    padding-top: 2%;
+    padding-right: 8%; */
+    padding-top: 6%;
+    padding-right:17%;
+    padding-left: 16%;
+    margin-top: 25%;
+    margin-left: 13%;
+    text-align: center;
+}
+.someStatic{
+    background: #F9F9F9;
+    box-shadow: 4px 8px 4px rgba(60, 42, 250, 0.25);
+    border-radius: 20px;
+    padding-top: 5%;
+    padding-bottom: 9%;
+    /* margin-left: 4%;
+    margin-top: 6%; */
+    border: 3px solid #B4B4B4;
+}
+.totalStatic{
+    padding-left: 4%;
+}
+.rameForStatic{
+    margin-top: 7%;
+    margin-left: 8%;
+    background: #FFFFFF;
+    border: 1px solid #B0B0B0;
+    box-sizing: border-box;
+    box-shadow: 4px 8px 4px rgba(30, 208, 253, 0.25);
+    border-radius: 20px;
+   width: 70%;
+   padding:5% 5%;
+   padding-bottom: 7%;
+   padding-right: 68%;
+   /* margin-right: 5%; */
+}
+.fixSomeStatic{
+    margin-top: 5%;
+    margin-left: 5%;
+    position: absolute;
+}
+.rameForStaticEffective{
+    width: 115%;
+    margin-left: 0%;
+    padding-bottom: 9%;
+    box-shadow: 4px 8px 4px rgba(30, 208, 253, 0.25);
+
+}
+.totalEffectiveStatic{
+    width: 93%;
+    padding-right: 22%;
+    padding-left: 6%;
+    padding-bottom: 15%;
+}
+.titleStaticEffective{
+    background: #FAFAFA;
+    border: 1px solid #D9D9D9;
+    box-sizing: border-box;
+    box-shadow: 0px 3px 7px rgba(30, 208, 253, 0.25);
+    border-radius: 10px;
+    width: 671px;
+    height: 141px;
+    font-family: Consolas;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 43px;
+    color: #000000;
+    padding-top: 3%;
+    padding-left: 4%;
+    padding-right: 3%;
+    margin-top: 5%;
+}
+.blockPur{
+    box-shadow: 4px 6px 7px rgba(135, 27, 227, 1);
+    margin-top: 5%;
+}
+.blockYel{
+    box-shadow: 4px 6px 7px rgba(253, 187, 253, 1);
+    margin-top: 5%;
+}
+
+
+.blockStatisticText{
+    font-family: Consolas;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 140%;
+    color: #000000;
+}
+.blockTime{
+    width: 180px;
+    height: 35px;
+}
+.blockStatisticDist{
+    width: auto;
+    height: 35px;
+    padding: 4% 4% 4% 4%;
+}
+.totalDistStatic{
+    width: 130%;
+    padding-top: 9%;
+    padding-right: 13%;
+    padding-bottom: 18%;
+}
+.rameForDisStatic{
+    margin-top: 10%;
+    width: 92%;
+    margin-left: 5%;
+    padding-right: 92%;
+}
+.bloksStaticForTotal{
+    width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.bloksStaticForTotalText{
+   width: 280px;
+   
+}
+.totalStatic{
+    width: 115%;
+}
+.rameForStatictgTotal{
+    padding-right: 70%;
+}
+.fixBlockStaicTotal{
+    width: 220px;
+}
+.totalStaticMe{
+    padding-right: -51%;
+}
+.active-button{
+    box-shadow: 6px 12px 10px rgba(60, 42, 250, 0.3);
+}
+:hover.btn-static{
+    cursor: pointer;
+    box-shadow: 6px 12px 10px rgba(60, 42, 250, 0.2);
 }

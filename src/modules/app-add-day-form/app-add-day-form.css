@@ -112,6 +112,7 @@ margin-bottom: 5%;
     border-left: #FFFFFF;
     border-right: #FFFFFF;
     background: linear-gradient(0deg, rgba(217, 217, 217, 0.2), rgba(217, 217, 217, 0.2)), #FFFFFF;
+    font-family: sans-serif;
 }
 .plans{
     margin-left: 35%;
@@ -166,6 +167,7 @@ border-radius: 8px;
     border-left: #FFFFFF;
     border-right: #FFFFFF;
     background: linear-gradient(0deg, rgba(217, 217, 217, 0.2), rgba(217, 217, 217, 0.2)), #FFFFFF;
+    font-family: sans-serif;
 }
 .goal{
     height:16%;
@@ -176,11 +178,12 @@ border-radius: 8px;
     background: linear-gradient(0deg, rgba(217, 217, 217, 0.2), rgba(217, 217, 217, 0.2)), #FFFFFF;
     margin-left: 8%;
     font-size: 23px;
+    font-family: sans-serif;
 }
 .ping{
     /* height: 56px;
     width: 56px; */
-    width: 8%;
+    width: 9%;
     margin-top: -3%;
     margin-right:3%;
 }
@@ -386,4 +389,5 @@ animation-fill-mode: forwards;
 .dateError{
     margin-top: 6%;
     margin-left: -6%;
+  
 }

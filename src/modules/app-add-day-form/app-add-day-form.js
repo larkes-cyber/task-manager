@@ -93,6 +93,8 @@ class AddDayForm extends Component{
         if(date.length!==8) return false;
         let flag=true;
         let flagNoRange=true;
+        let day=true;
+        let mounth=true;
         let flagRealDate=true;
         for(let i = 0; i < date.lenght; i++){
             let item=date[i];
@@ -103,19 +105,29 @@ class AddDayForm extends Component{
         let count=0;
         for(let i = 2; i < date.length; i++){
             if(date[i]==='.'){
-                count++;
                 const num= +(date[i-2]+date[i-1]);
-                flagNoRange=num>31||num<1;
-                if(count==2){
-                    console.log(num)
+                count++;
+                if(count===1){
+                    day=num<=31&&num>=1;
                 }
-                flagNoRange=count==2?num<=12&&num>=1:flagNoRange;
+                else{
+                    mounth=num<=12&&num>=1;
+                }
+                
+                // flagNoRange=num<31&&num>1;
+                // console.log(num,flagNoRange)
+                // if(count==2){
+                //     console.log(num)
+                //     console.log(flagNoRange)
+                // }
+                // flagNoRange=count==2?(num<=12&&num>=1)&&flagNoRange:flagNoRange;
                 if(!(date[i-1]!=='.'&&date[i-2]!=='.')){
                     flagNoRange=false;
                 }
             }
         }
-        flagNoRange=(count===2)&&(flagNoRange);
+
+        flagNoRange=(count===2)&&(flagNoRange)&&(day&&mounth);
         console.log('check',flag,flagNoRange)
         return flag&&flagNoRange;
     }
@@ -204,6 +216,7 @@ class AddDayForm extends Component{
         if(errorFlag){
             const elemsData=e.target.parentElement.parentElement.firstChild.childNodes;
             let dateInput='';
+            alert(errorDate)
             const elem=e.target.parentElement.parentElement.firstChild;
             if(!errorDate){
                 if(!elem.classList.contains('withError')){
@@ -362,19 +375,6 @@ class AddDayForm extends Component{
             this.setState(state=>({
                 flagListGoals:true
             }))
-        // console.log(elem.parentNode.parentNode.parentNode.getAttribute('data-keyGoal'));
-        // if(elem.classList.contains('hideBranchSec')&&this.state.flagListGoals){
-        //     elem.parentNode.parentNode.childNodes[1].className='listMainGoals';
-     
-        //     return; 
-        // }
-        // if(elem.classList.contains('hideBranch')&&this.state.flagListGoals){
-        //     e.target.parentNode.childNodes[1].className='listMainGoals';
-        //     this.setState(state=>({
-        //         flagListGoals:false
-        //     }))
-        //     return; 
-        // }
     }
     changeRadio=(e)=>{
         e.target.parentNode.parentNode.childNodes.forEach(item=>{
@@ -397,7 +397,6 @@ class AddDayForm extends Component{
              
               console.log(arrayMainGoals)
               arrayMainGoals=arrayMainGoals.map(item=>(
-                // arrayMainGoals.push({id:0,goal:'default'});
                 <div className='mainBlockGoals'  onClick={this.changeRadio}>
                     <input type="checkbox" id="contactChoice1" name="contact" data-id={item.id}/>
                     <p className='mainGoalChoice'>{item.goal}</p>

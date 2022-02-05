@@ -75,21 +75,9 @@ class MyDays extends Component{
         })
         if(this.state.addForm){
             return(
-                <div className='superBlockMyDays'>
-                    <div>
-                        <AddDayForm changeState={this.onChangeStateAddForm} onHideForm={this.onHideForm} onVisibleHead={()=>this.props.onVisibleHead()}/>
-                        {/* <div className={this.state.addForm?'withoutAddDay':''}>
-                        <FlipNavBar checkAttue={(e)=>{this.props.checkPage(this.onAttue(e))}}/>
-                        <div className='listMyDays'>
-                            {days}
-                            <div className='fixAddForm'>
-                                <h1 className='titleAdd'>Add</h1>
-                                <img src={plusDay} className='plusDays' alt="" />
-                            </div>
-                        </div>  
-                       </div> */}
-                    </div>
-                </div>
+               
+                 <AddDayForm changeState={this.onChangeStateAddForm} onHideForm={this.onHideForm} onVisibleHead={()=>this.props.onVisibleHead()}/>
+           
             )
         }
         else{

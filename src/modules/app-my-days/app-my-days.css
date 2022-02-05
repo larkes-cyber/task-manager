@@ -67,6 +67,7 @@ box-shadow: 4px 8px 4px rgba(63, 33, 235, 0.25);
     flex-direction: row;
     margin-left: 12%;
     margin-top: 8%;
+
     
 }
 .list-elem-text{
@@ -77,7 +78,7 @@ box-shadow: 4px 8px 4px rgba(63, 33, 235, 0.25);
     font-size: 20px;
     line-height: 26px;
     color: #000000;
-    margin-top: -5%;
+ 
     word-wrap: break-word;
     width: 60%;
 }
@@ -85,8 +86,9 @@ box-shadow: 4px 8px 4px rgba(63, 33, 235, 0.25);
     /* height: 0%;
     margin-top:500px; */
     width: 54px;
-    height: 46px;
-    margin-bottom: -30%;
+    height: 54px;
+    margin-top: 0%;
+
 }
 @font-face {
 	font-family: 'Spartan'; 
@@ -153,7 +155,7 @@ box-shadow: 4px 8px 4px rgba(63, 33, 235, 0.25);
     margin-left: -6%;
 }
 .priorityFone{
-    background: rgba(255, 0, 0, 0.8);
+    background: #3C2AFA;
     opacity: 1;
     border-radius: 4px;
     padding-top:4%;

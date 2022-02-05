@@ -36,20 +36,21 @@ class MainGoals extends Component{
     sumbitForm=(e)=>{
         const info=e.target.parentNode.parentNode.childNodes[0].value;
         let data=this.state.data;
-        let count=localStorage.getItem('count')!=null?+localStorage.getItem('count'):0;
+        const realId=data[data.length-2]===undefined?1:data[data.length-2].range+1;
+        let count=localStorage.getItem('count')!=null?+localStorage.getItem('count')+1:0;
         data=data.filter(item=>item.type!=='form');
         data.push({
             type:'goal',
-            id:count+=1,
+            id:count,
             goal:info,
-            count:0
+            count:0,
+            range:realId
         });
         this.setState(state=>({
             data,
             count:state.count+1,
             form:true
         }))
-
         localStorage.setItem('mainGoals',JSON.stringify(data));
         localStorage.setItem('count',JSON.stringify(count));
     }
@@ -174,6 +175,8 @@ class MainGoals extends Component{
         const elemId=e.target.parentNode.parentNode.parentNode.getAttribute('mainGoal');
         let data=this.state.data;
         data=data.filter(item=>item.id!==+elemId);
+        data=data.map((item,i)=>({type:item.type,range:i+1,id:item.id,goal:item.goal,count:item.count}));
+        console.log(data);
         this.setState(state=>({
             data
         }))
@@ -204,7 +207,7 @@ class MainGoals extends Component{
                 output.push(
                     <div className='mainGoalDiv' mainGoal={item.id}>
                         <div className='textAndIcMain'>
-                            <p className='mainGoal'>{`${item.id}. ${item.goal}`}</p>
+                            <p className='mainGoal'>{`${item.range}. ${item.goal}`}</p>
                             <img src={FavIcon} className='favIc' onClick={this.openSorce} alt="" />
                         </div>
                         <div className='noPacificContent bottomContent'>

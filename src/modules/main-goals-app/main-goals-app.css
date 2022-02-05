@@ -113,6 +113,7 @@
 .addMainGoal{
     width: 220px;
     background:#FFFFFF;
+    font-family:sans-serif;
 }
 .itemFormsMain{
     margin-top: 10%;

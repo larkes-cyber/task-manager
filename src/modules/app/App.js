@@ -8,6 +8,7 @@ import Header from '../app-header-bar/app-header';
 import React, {Component} from 'react';
 import NextDay from '../app-my-next-day/app-my-day';
 import MainGoals from '../main-goals-app/main-goals-app';
+//
 class App extends Component{
   constructor(props){
     super(props);
@@ -132,6 +133,8 @@ class App extends Component{
       let mainGoals=JSON.parse(localStorage.getItem('mainGoals'));
       console.log(mainGoals)
       let array=mainGoals!==null?mainGoals.filter(item=>+item.id===+copyArray[0].branch)[0]:[];
+      console.log(array)
+      if(array!==undefined){
         if(array.length!==0){
           console.log(array)
           array.count+=1;
@@ -143,6 +146,7 @@ class App extends Component{
           console.log(mainGoals);
           this.onChangeMainGoals(mainGoals)
     }
+  }
   }
     if(whoBut=='del'){
      copyDay[0].goals.splice(indexGoal,1);
@@ -185,7 +189,7 @@ class App extends Component{
     if(page==='random'){
       return (
         <>
-          {this.state.visibleHead?<Header name="Today"/>:null}
+          {this.state.visibleHead?<Header name={this.state.date}/>:null}
            <MyDay checkPage={this.checkPage} 
            onComplite={this.onComplite} 
            data={this.state.data} 
