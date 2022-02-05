@@ -62,16 +62,16 @@ const TotalEffectiveStatic=()=>{
                 arrayValueOfElems=[];
                 let k=Data.length-1;
                 let flag=false;
+                const nowDay=getNowDay();
+                Data.forEach((item,i)=>{
+                    if(item.date===nowDay){
+                        k=i;
+                    }
+                });
                 while (k>=0){
-                    if(Data[k].date===getNowDay()){
-                        flag=true;
-                    }
-                    if(flag){
-                        arrayOfElems.push(Data[k].date)
-                    }
+                    arrayOfElems.push(Data[k].date)
                     k-=3;
                 }
-        
                 arrayOfElems.forEach(item=>{
                     arrayValueOfElems.push(getTotalCountForDay(item))
                 })
