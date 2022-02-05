@@ -28,6 +28,11 @@ const DistractionsStatic=()=>{
         setCountTotalGoals(countTotalGoals);
         setCountComplDays(countComplDays);
         setCountSetGoals(countSetGoals);
+        const dataForDiagrammFromBase=JSON.parse(localStorage.getItem('forStatic'));
+        const dataForDiagramm=[];
+        for(let n in dataForDiagrammFromBase){
+            dataForDiagramm.push(dataForDiagrammFromBase[n]);
+        }
         const myCharts=document.createElement('canvas');
         myCharts.style.width="100px";
         myCharts.style.height="100px";
@@ -38,7 +43,7 @@ const DistractionsStatic=()=>{
             type: 'doughnut',
             data:{
                 datasets: [{
-                    data: [4,3,5,2,1],
+                    data: dataForDiagramm,
                     backgroundColor: [
                         '#4BBF89',
                         '#EE05F2',
