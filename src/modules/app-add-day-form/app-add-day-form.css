@@ -181,9 +181,9 @@ border-radius: 8px;
     font-family: sans-serif;
 }
 .ping{
-    /* height: 56px;
-    width: 56px; */
-    width: 9%;
+    height: 56px;
+    width: 56px;
+
     margin-top: -3%;
     margin-right:3%;
 }
@@ -304,6 +304,7 @@ border-radius: 8px;
     color: #000000;
     margin-top: 12%;
     margin-left: 5%;
+    width: 100px;
 }
 #contactChoice1{
     height: 21px;

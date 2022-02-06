@@ -60,7 +60,7 @@ const TotalEffectiveStatic=()=>{
                 let Data=JSON.parse(localStorage.getItem('data')),
                 arrayOfElems=[],
                 arrayValueOfElems=[];
-                let k=Data.length-1;
+                let k=Data.length-2;
                 let flag=false;
                 const nowDay=getNowDay();
                 Data.forEach((item,i)=>{

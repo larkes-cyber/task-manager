@@ -26,7 +26,7 @@ import {useState} from 'react';
 
   const date=getNowDay();
   if(!localStorage.getItem('date')){
-    localStorage.setItem('date','01.02.22');
+    localStorage.setItem('date',getNowDay());
   }
   if(!localStorage.getItem('forStatic')){
     localStorage.setItem('forStatic',JSON.stringify({

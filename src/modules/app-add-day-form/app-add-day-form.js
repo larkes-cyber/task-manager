@@ -27,6 +27,7 @@ class AddDayForm extends Component{
         const error=document.createElement('p');
         if(err=='empT'){
             error.textContent="Some input is empty";
+     
         }
         if(err=='incT'){
             error.textContent="Incorrect time";
@@ -204,19 +205,19 @@ class AddDayForm extends Component{
 
         });
 
-        if(!(errrorEmpInp && errorTime)){
-            errorFlag=false;
-        }
+       
         if(!errorDate){
             errorFlag=true;
         }
         else{
             errorFlag=true;
         }
+        if(!(errrorEmpInp && errorTime)){
+            errorFlag=false;
+        }
         if(errorFlag){
             const elemsData=e.target.parentElement.parentElement.firstChild.childNodes;
             let dateInput='';
-            alert(errorDate)
             const elem=e.target.parentElement.parentElement.firstChild;
             if(!errorDate){
                 if(!elem.classList.contains('withError')){
