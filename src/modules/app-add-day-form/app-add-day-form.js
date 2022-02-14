@@ -89,8 +89,22 @@ class AddDayForm extends Component{
         })
         return flag;
     }
+    getNowDay=()=>{
+        let day=''+new Date().getDate();
+        let month=''+(new Date().getMonth()+1); 
+        if(day.length===1){
+        day='0'+day;
+        }
+        if(month.length===1){
+        month='0'+month;
+        }
+        return `${day}.${month}.22`;
+    }
     onCheckRealDate=(date)=>{
         console.log('check',date)
+        let dateNow=+(new Date());
+        let lastMounth='';
+        let lastDay='';
         if(date.length!==8) return false;
         let flag=true;
         let flagNoRange=true;
@@ -109,28 +123,25 @@ class AddDayForm extends Component{
                 const num= +(date[i-2]+date[i-1]);
                 count++;
                 if(count===1){
+                    lastDay=num
                     day=num<=31&&num>=1;
                 }
                 else{
+                    lastMounth=num
                     mounth=num<=12&&num>=1;
                 }
-                
-                // flagNoRange=num<31&&num>1;
-                // console.log(num,flagNoRange)
-                // if(count==2){
-                //     console.log(num)
-                //     console.log(flagNoRange)
-                // }
-                // flagNoRange=count==2?(num<=12&&num>=1)&&flagNoRange:flagNoRange;
                 if(!(date[i-1]!=='.'&&date[i-2]!=='.')){
                     flagNoRange=false;
                 }
             }
         }
-
+       
         flagNoRange=(count===2)&&(flagNoRange)&&(day&&mounth);
         console.log('check',flag,flagNoRange)
-        return flag&&flagNoRange;
+        const lastDate=+(new Date(2022,lastMounth-1,lastDay));
+  
+        //const flagCorrect=lastDate>dateNow;
+        return flag&&flagNoRange&&(lastDate>dateNow);
     }
     onCheckDataForm=(e)=>{
         this.props.onVisibleHead();

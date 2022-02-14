@@ -29,8 +29,8 @@
 }
 .b-popup .b-popup-content{
     margin:30px auto 0px auto;
-    width: 34%;
-    height: 50vw;
+    width: 600px;
+
     background: #FFFFFF;
     border: 3px solid #6B6B6B;
     box-sizing: border-box;
@@ -56,11 +56,13 @@
     box-sizing: border-box;
     border-radius: 10px;
     width: 320px;
+    height: 115px;
     padding-bottom: 5%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 8%;
     padding-top: 3%;
+    overflow: auto; 
 }
 
 .childListNotComplitedGoals{
@@ -79,7 +81,7 @@
     font-size: 17px;
     line-height: 18px;
     color: #000000;
-    margin-top: 10%;
+    margin-top: 12%;
     margin-left: 3%;
 }
 .group-checkbox{
@@ -101,7 +103,8 @@
     line-height: 38px;
     color: #FFFFFF;
    border-style: none;
-   margin-top: 5%;
+   margin-top: 2%;
+   margin-bottom: 3%;
 }
 .childListNotComplitedGoals{
     font-family: Consolas;

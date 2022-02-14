@@ -115,7 +115,7 @@ class MainGoals extends Component{
         return outputStatic;
     }
     getDiagramm=(selector,elem)=>{
-        const data=this.getDataForDiagramm(selector),
+        let data=this.getDataForDiagramm(selector),
         dataLabels=[],
         dataForLabels=[];
         console.log(selector)
@@ -217,7 +217,7 @@ class MainGoals extends Component{
                                 <div className={this.props.fix?"goalMainRem":"goalMainRemFix"} onClick={this.removeMainGoal}>remove</div>
                             </div>
                         </div>  
-                    </div>//goalStatFix
+                    </div>//goalStatFix  
                 ) 
             }
         })

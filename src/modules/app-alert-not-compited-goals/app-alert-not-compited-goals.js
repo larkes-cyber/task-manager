@@ -50,23 +50,23 @@ class NotComplitedGoals extends Component{
                         <div className='group-checkbox'>
                                 <div className='alertMainBlockGoals'>
                                     <input type="checkbox" id="contactChoice1" name="contact" data-val='-1' data-id='1' />
-                                    <p className='alertMainBlockGoalsText'>Не удобное время</p>
+                                    <p className='alertMainBlockGoalsText'>Unsuitable time</p>
                                 </div>
                                 <div className='alertMainBlockGoals '>
                                     <input type="checkbox" id="contactChoice1" name="contact" data-val='0' data-id='2' />
-                                    <p className='alertMainBlockGoalsText'>непредвиденные обстоятельства</p>
+                                    <p className='alertMainBlockGoalsText'>Contingencies</p>
                                 </div>
                                 <div className='alertMainBlockGoals '>
                                     <input type="checkbox" id="contactChoice1" name="contact" data-val='-2' data-id='3' />
-                                    <p className='alertMainBlockGoalsText'>лень</p>
+                                    <p className='alertMainBlockGoalsText'>Laziness</p>
                                 </div>
                                 <div className='alertMainBlockGoals'>
                                     <input type="checkbox" id="contactChoice1" name="contact" data-val='1' data-id='4' />
-                                    <p className='alertMainBlockGoalsText'>Нашёл альтернативную замену</p>
+                                    <p className='alertMainBlockGoalsText'>Alternative</p>
                                 </div>
                                 <div className='alertMainBlockGoals'>
                                     <input type="checkbox" id="contactChoice1" name="contact" data-val='0' data-id='5' />
-                                    <p className='alertMainBlockGoalsText'>Другое</p>
+                                    <p className='alertMainBlockGoalsText'>Other</p>
                                 </div>
                         </div>
                         <button className='ButSubmitAlert' onClick={this.submitForm}>Okey</button>
