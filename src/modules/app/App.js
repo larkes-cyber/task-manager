@@ -8,183 +8,265 @@ import Header from '../app-header-bar/app-header';
 import React, {Component} from 'react';
 import NextDay from '../app-my-next-day/app-my-day';
 import MainGoals from '../main-goals-app/main-goals-app';
-//
+
 class App extends Component{
+
   constructor(props){
     super(props);
+
+    // Внутреннее состояние приложения
     this.state={
-      page:'today',
-      data:(localStorage.getItem('data')!=null)?JSON.parse(localStorage.getItem('data')):[],
-      date:'',
-      visibleHead:true,
-      flagMain:false,
-      flagMainHide:false
+      page: 'today', // Текущая страница
+      data: (localStorage.getItem('data')!=null)?JSON.parse(localStorage.getItem('data')):[], // Подгрузка данных для приложения + проверка, если их нет
+      date: '', // дата для переключения какой-то день  p.s. идёт в хедер
+      visibleHead: true, // Отображение хэдера p.s. становиться false, когда человек заполняет форму для дня
+      flagMainHide: false // Отображает страницу добавления целей
 
       }
-    }//JSON.parse(localStorage.getItem('data'))(localStorage.getItem('data')!=null)?JSON.parse(localStorage.getItem('data')):[]
+    }
+    // Внутреннее состояние приложения
+
+    // Функция, для отображения хэдера
     onVisibleHead=()=>{
-  
       this.setState({
-        visibleHead:!this.state.visibleHead
+        visibleHead: !this.state.visibleHead
       })
     }
+    // Функция, для отображения хэдера
+
+    // Функция, для обновления данных приложения p.s. данные == поставленные цели
     uploadDataState=(propData)=>{
-      let poperty=propData;
-      poperty={
-        date:poperty[1],
-        goals:propData[0]
+
+      let poperty = propData;
+
+      poperty = {
+        date: poperty[1],
+        goals: propData[0]
       }
+
       let array=[];
+
       this.state.data.forEach(item=>{
         array.push(item);
       })
     
-    array.push(poperty);
-    console.log(array);
+      array.push(poperty);
+
       this.setState({
-        data:array
+        data: array
       })
-      console.log(this.state)
 
       localStorage.setItem('data',JSON.stringify(array));
+
     }
-  checkPage=(attue)=>{
-    this.setState({page:attue});
-  }
-  buttonAdd=(property)=>{
-    function getMinets(date){
-      let hours=date.substr(0,2);
-      let min=date.substr(3,5);
-      return ((+hours[1]*60)+(+(hours[0]+'0')*60))+(+(min[0]+'0')+ +(min[1]))
+    // Функция, для обновления данных приложения p.s. данные == поставленные цели
+
+    // Функция, меняющая страницу
+    checkPage=(attue)=>{
+      this.setState({page:attue});
     }
-    let arr=property.goals;
+    // Функция, меняющая страницу
+
+    // Функция добавления новой цели на день
+    buttonAdd=(property)=>{
+
+    // Функция, возвращающая время в мин
+      function getMinuts(date){
+
+        let hours = date.substr(0,2);
+
+        let min = date.substr(3,5);
+
+        return ((+hours[1]*60)+(+(hours[0]+'0')*60))+(+(min[0]+'0')+ +(min[1]))
+      }
+    // Функция, возвращающая время в мин
+
+    // Сортировка целей
+    let arr = property.goals;
     for (let j = arr.length - 1; j > 0; j--) {
       for (let i = 0; i < j; i++) {
-        if (getMinets(arr[i].goal.substr(0,5)) > getMinets(arr[i+1].goal.substr(0,5))) {
+        if (getMinuts(arr[i].goal.substr(0,5)) > getMinuts(arr[i+1].goal.substr(0,5))) {
           let temp = arr[i];
           arr[i] = arr[i + 1];
           arr[i + 1] = temp;
         }
       }
     }
-    let newArr=this.state.data;
-    let index='';
+    // Сортировка целей
+
+    let newArr = this.state.data; // Данные до нажатия
+
+    let index = ''; // Запоминает индекс дня, в котором произошло событие ADD
+
+    // Поиск индекса дня, в котором добавляется ещё одна цель
     newArr.forEach((item,i)=>{
-      if(item.date===property.date){
-        index=i;
+      if(item.date === property.date){
+        index = i;
       }
     })
-    console.log(index)
-    newArr=newArr.filter((item,i)=>i!==index);
-    newArr.push(property);
+    // Поиск индекса дня, в котором добавляется ещё одна цель
+
+    newArr = newArr.filter((item,i)=>i !== index); // Удаления старого дня(до добавления новой цели) из всех дней
+
+    newArr.push(property); // Добавления дня после добавления новой цели
+
+    // Обновление данных
     this.setState({
-      data:newArr
+      data: newArr
     });
-    localStorage.setItem('data',JSON.stringify(newArr));
-        
-  }
-  onComplite=(time,date,whoBut)=>{
-    let copyArr=this.state.data;
-      let copyDay='';
-      let copyArray=this.state.data;
-      let indexDay='',
-          indexGoal='';
-      copyArray=copyArray.filter((item,i)=>{
-        if(item.date==date){
-          indexDay=i;
+
+    localStorage.setItem('data',JSON.stringify(newArr));   
+    // Обновление данных
+
+   }
+  // Функция добавления новой цели на день
+
+  // Функция, обновляющая данные о завершении цели, её удаления, об удалении дня
+  onComplite = (time, date, whoBut)=>{
+
+    let copyArr = this.state.data; // данные до
+
+      let copyDay = ''; // для поиска дня, в котором произошло событие
+
+      let copyArray = this.state.data; //  Тот самый день
+
+      let indexDay = '', // индекс дня, в котором произошло событие
+          indexGoal = ''; // индекс цели, в которой произошло событие
+
+      // нахождение дня
+      copyArray = copyArray.filter((item,i)=>{
+        if(item.date == date){
+          indexDay = i;
+
           return item;
         }
       });
-      //fg
-      if(whoBut=='rem'){
-        let retData=this.state.data;
+      // нахождение дня
+
+      // Если была нажата кнопка "удалить цель"
+      if(whoBut == 'rem'){
+
+        let retData = this.state.data;
+
         retData.splice(indexDay,1);
-        console.log(retData)
+
         this.setState({
           data:retData
         })
+
         localStorage.setItem('data',JSON.stringify(retData));
+
       }
-      copyDay=copyArray;
-      console.log(copyArray);
-      copyArray=copyArray[0].goals.filter((item,i)=>{
-        if(item.goal.substr(0,5)==time){
-          indexGoal=i;
+      // Если была нажата кнопка "удалить цель"
+
+      copyDay = copyArray; // сохраняет день
+
+      // Для нахождения цели
+      copyArray = copyArray[0].goals.filter((item, i)=>{
+        if(item.goal.substr(0,5) == time){
+          indexGoal = i;
           return item;
         }
       });
+       // Для нахождения цели
 
-    if(whoBut=='ok'){
-      copyArray[0].status=true;
-      copyDay[0].goals[indexGoal]=copyArray[0];
-      const allGoals=copyDay[0].goals.length;
-      const okArray=copyDay[0].goals.filter(item=>item.status).length;
-      if(allGoals===okArray){
-        copyDay[0].flag=true;
+    // Если была нажата кнопка "Завершить цель"
+    if(whoBut == 'ok'){
+      copyArray[0].status = true;
+
+      copyDay[0].goals[indexGoal] = copyArray[0];
+
+      const allGoals = copyDay[0].goals.length;
+
+      const okArray = copyDay[0].goals.filter(item=>item.status).length;
+
+      if(allGoals === okArray){
+        copyDay[0].flag = true;
       }
-      copyArr[indexDay]=copyDay[0];
-      console.log(copyArr)
+
+      copyArr[indexDay] = copyDay[0];
+      
       this.setState({
-        data:copyArr
+        data: copyArr
       })
+
       localStorage.setItem('data',JSON.stringify(this.state.data));
-      console.log(JSON.parse(localStorage.getItem('data')))
      
-      let mainGoals=JSON.parse(localStorage.getItem('mainGoals'));
-      console.log(mainGoals)
-      let array=mainGoals!==null?mainGoals.filter(item=>+item.id===+copyArray[0].branch)[0]:[];
-      console.log(array)
-      if(array!==undefined){
-        if(array.length!==0){
-          console.log(array)
-          array.count+=1;
-          mainGoals.forEach((item,i)=>{
-            if(+item.id===+copyArray[0].branch){
-              mainGoals[i]=array;
+      let mainGoals = JSON.parse(localStorage.getItem('mainGoals'));
+  
+      let array =mainGoals !== null?mainGoals.filter(item=>+item.id===+copyArray[0].branch)[0]:[];
+      
+      if(array !== undefined){
+
+        if(array.length !== 0){
+          
+          array.count += 1;
+
+          mainGoals.forEach((item, i)=>{
+            if(+item.id === +copyArray[0].branch){
+              mainGoals[i] = array;
             }
           })
-          console.log(mainGoals);
+
           this.onChangeMainGoals(mainGoals)
     }
   }
   }
-    if(whoBut=='del'){
+  // Если была нажата кнопка "Завершить цель"
+
+  // Удаляет полностью день
+    if(whoBut == 'del'){
+
      copyDay[0].goals.splice(indexGoal,1);
-     console.log(copyDay[0].goals.length)
-     if(copyDay[0].goals.length===0){
+
+     if(copyDay[0].goals.length === 0){
+
        copyArr.splice(indexDay,1);
+
      }
      else{
-      copyArr[indexDay]=copyDay[0];
+
+      copyArr[indexDay] = copyDay[0];
+
      }
+
       this.setState({
-        data:copyArr
+        data: copyArr
       })
+
       localStorage.setItem('data',JSON.stringify(this.state.data));
     } 
-  
+  // Удаляет полностью день
+
   }
+  // Функция, обновляющая данные о завершении цели, её удаления, об удалении дня
+
+  // Обновляет самые главные цели
   onChangeMainGoals=(data)=>{
     localStorage.setItem('mainGoals',JSON.stringify(data));
-    this.setState(state=>({
-      flagMain:!state.flagMain
-    }))
   }
-  onChangeMainGoalsState=()=>{
- 
-    
-  }
+  // Обновляет самые главные цели
+
+  // Позволяет открывать дни в общем разделе дней
   openPage=(data)=>{
+
     this.setState({
       date:data,
       page:'random'
     })
+
   }
+  // Позволяет открывать дни в общем разделе дней
+
+  // Меняет отображение страницы "добавление целей"
   onOffOrTurnMainComponent=()=>{
     this.setState({
       flagMainHide:!this.state.flagMainHide
     })
   }
+  // Меняет отображение страницы "добавление целей"
+
+  // Загружает текущую страницу
   onLoadPage=(page,flagMainHide)=>{
     if(page==='random'){
       return (
@@ -260,12 +342,12 @@ class App extends Component{
         />
        </>
       )
-    }//<AddPage checkPage={this.checkPage} uploadDataState={this.uploadDataState}/>
+    }
   }
- 
-  render(){
-    console.log(localStorage.getItem('data')==null)
+  // Загружает текущую страницу
 
+  
+  render(){
     return (
       <div className='globalApp'>
          {this.onLoadPage(this.state.page,this.state.flagMainHide)}
@@ -273,6 +355,7 @@ class App extends Component{
       </div>
   ); 
 }
+
 }
 
 

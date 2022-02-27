@@ -1,10 +1,6 @@
 import './app-alert-not-compited-goals.css';
 import React, {Component} from 'react';
 class NotComplitedGoals extends Component{
-    constructor(props){
-        super(props)
-    }
-//submitNoComplitedGoalsForm
     submitForm=(e)=>{
         this.props.submitNoComplitedGoalsForm()
         const elem=e.target.parentNode.childNodes[2].childNodes;
@@ -19,17 +15,34 @@ class NotComplitedGoals extends Component{
             }
 
         })
+        const getNowDay=()=>{
+            let day=''+new Date().getDate();
+            let month=''+(new Date().getMonth()+1); 
+            if(day.length===1){
+              day='0'+day;
+            }
+            if(month.length===1){
+              month='0'+month;
+            }
+            return `${day}.${month}.22`;
+          }
+        
+        const date=getNowDay();
         const Data=JSON.parse(localStorage.getItem('data'));
         let indexThisData='';
+
+        console.log(localStorage.getItem('date'))
         const thisData=Data.filter((item,i)=>{
             if(item.date===localStorage.getItem('date')){
+               
                 indexThisData=i;
             }
             return item.date===localStorage.getItem('date');
         })[0];
+        console.log(thisData)
         thisData.constOfReson=count;
-        // .filter(item=>item.date==localStorage.getItem('date'));
         Data[indexThisData]=thisData;
+        localStorage.setItem('date',date);
         localStorage.setItem('forStatic',JSON.stringify(dataForStatic))
     }
     render(){

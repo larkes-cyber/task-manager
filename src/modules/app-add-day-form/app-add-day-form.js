@@ -135,13 +135,16 @@ class AddDayForm extends Component{
                 }
             }
         }
-       
+       let flagOfLastDate=false;
         flagNoRange=(count===2)&&(flagNoRange)&&(day&&mounth);
-        console.log('check',flag,flagNoRange)
         const lastDate=+(new Date(2022,lastMounth-1,lastDay));
-  
-        //const flagCorrect=lastDate>dateNow;
-        return flag&&flagNoRange&&(lastDate>dateNow);
+     //   console.log(String(lastMounth).length)
+     //   console.log((lastDay+'.'+((''+lastMounth.length===1)?'0'+lastMounth:lastMounth)+'.'+'22'))
+        if((this.getNowDay()==(lastDay+'.'+(String(lastMounth).length===1?'0'+lastMounth:lastMounth)+'.'+'22')||(lastDate>=dateNow))){
+            flagOfLastDate=true
+        }
+        console.log(lastDate,dateNow)
+        return flag&&flagNoRange&&flagOfLastDate;
     }
     onCheckDataForm=(e)=>{
         this.props.onVisibleHead();
@@ -152,7 +155,6 @@ class AddDayForm extends Component{
         let errorTime=true,
             errrorEmpInp=true,
             errorDate=this.onCheckRealDate(forDate);
-        console.log('lolka',forDate)
         elems.forEach(item => {
             console.log(item)
             if(item.classList.contains('listGoals')){

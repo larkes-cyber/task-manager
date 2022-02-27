@@ -11,7 +11,6 @@ import {useState} from 'react';
     return e.target.getAttribute('data-page');
   }
   let data=[];
-  console.log(props.date)
   const getNowDay=()=>{
     let day=''+new Date().getDate();
     let month=''+(new Date().getMonth()+1); 
@@ -24,9 +23,17 @@ import {useState} from 'react';
     return `${day}.${month}.22`;
   }
 
-  const date=getNowDay();
+  const getDaysOfDate=(date)=>{
+      let result=0;
+      result+=+(date[0]+date[1]);
+      result+=+(date[3]+date[4])*30;
+      return result;
+  }
+
+  let date=getNowDay();
   if(!localStorage.getItem('date')){
     localStorage.setItem('date',getNowDay());
+    localStorage.setItem('lastDays','0');
   }
   if(!localStorage.getItem('forStatic')){
     localStorage.setItem('forStatic',JSON.stringify({
@@ -50,35 +57,57 @@ import {useState} from 'react';
   let arrayOfNotComplitedGoals=[];
   function checkNoComplitedGoals(){
       const lastDate=localStorage.getItem('date');
-      const Data=JSON.parse(localStorage.getItem('data'))
-      .filter(item=>item.date===lastDate)[0].goals
-      .filter(item=>!item.status);
+      
+      if(date===lastDate)return false
+      
+      const lastDays=getDaysOfDate(date)-getDaysOfDate(localStorage.getItem('date'))-1;
+
+      if (lastDays!=0){
+
+        localStorage.setItem("lastDays",(+localStorage.getItem('lastDays')+lastDays)+'');
+        
+        localStorage.setItem('date',date);
+
+        return
+      }
+
+
+      console.log(JSON.parse(localStorage.getItem('data')))
+      let Data=JSON.parse(localStorage.getItem('data'))
+      .filter(item=>item.date===lastDate);
+      if(Data.length===0)return false
+      Data=Data[0].goals.filter(item=>!item.status);
       arrayOfNotComplitedGoals=Data;
       if(Data.length===0){
         localStorage.setItem('date',date);
       }
-      return Data.length!==0 && date!==lastDate;
+      console.log(Data.length!==0)
+      return Data.length!==0;
   }
   const submitNoComplitedGoalsForm=()=>{
     setstate(false);
-    localStorage.setItem('date',date);
+   
   }
   if ((data.length==0)){
       return(
-      <AddPage checkPage={props.checkPage} 
-      uploadDataState={props.uploadDataState}
-      onComplite={props.onComplite}
-      day={date}
-      onVisibleHead={()=>props.onVisibleHead()}
-      flagMain={props.flagMain}
-      />
+        <>
+       {props.flag?null:checkNoComplitedGoals()&&state?<NotComplitedGoals arrayOfNotComplitedGoals={arrayOfNotComplitedGoals} 
+      submitNoComplitedGoalsForm={()=>submitNoComplitedGoalsForm()}/>:null}
+        <AddPage checkPage={props.checkPage} 
+              uploadDataState={props.uploadDataState}
+              onComplite={props.onComplite}
+              day={date}
+              onVisibleHead={()=>props.onVisibleHead()}
+              flagMain={props.flagMain}
+        />
+        </>
+   
     )
   }   
   else{
-    console.log(data)
     return (
       <div className="App">
-      {checkNoComplitedGoals()&&state?<NotComplitedGoals arrayOfNotComplitedGoals={arrayOfNotComplitedGoals} 
+      {props.flag?null:checkNoComplitedGoals()&&state?<NotComplitedGoals arrayOfNotComplitedGoals={arrayOfNotComplitedGoals} 
       submitNoComplitedGoalsForm={()=>submitNoComplitedGoalsForm()}/>:null}
         <div className="appMain">
           <div className='part'>

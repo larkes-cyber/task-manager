@@ -43,6 +43,7 @@ const TotalEffectiveStatic=()=>{
                 flag=false
             }
             })
+
             return TotalCount;
         }
       const getNowDay=()=>{
@@ -85,7 +86,10 @@ const TotalEffectiveStatic=()=>{
             const ctxsec=myChartes.getContext('2d');
             ctxsec.canvas.style.width="700px";
             ctxsec.canvas.style.height="850px";
-            const [secondLebals,secondData]=getDataForWeekStatic();
+            let [secondLebals,secondData]=getDataForWeekStatic();
+            
+            secondData[secondData.length-1]-=+localStorage.getItem('lastDays')*3;
+         
             const myChartsec = new Chart(ctxsec, {
                 type: 'line',
                 data: {
