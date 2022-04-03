@@ -51,7 +51,7 @@ line-height: 130%;
 
 }
 .change{
-    padding-top: 10%;
+    padding-top: 2%;
     display: flex;
     flex-direction: row;
     height: 46px;
@@ -66,8 +66,8 @@ margin-top: 0%;
 }
 .del{
     margin-top: 10%;
-    width: 19px;
-    height: 19px;
+    width: 29px;
+    height: 29px;
 }
 .ok{
     margin-top: 10%;

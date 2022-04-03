@@ -82,7 +82,7 @@ class NotComplitedGoals extends Component{
                                     <p className='alertMainBlockGoalsText'>Other</p>
                                 </div>
                         </div>
-                        <button className='ButSubmitAlert' onClick={this.submitForm}>Okey</button>
+                        <button className='ButSubmitAlert' onClick={this.submitForm}>Ok</button>
                     </div>
                 </div>
             </>

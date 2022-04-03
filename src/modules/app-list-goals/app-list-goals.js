@@ -1,15 +1,12 @@
 import React, {Component } from 'react';
 import DateGoal from '../app-date-value/app-date-value';
 import './app-list-goals.css';
-import Goal from '../app-goal-value/app-goal-value';
-import AddBut from '../app-add-goal/app-add-goal';
 import compl from '../app-goal-value/img/compl.png';
 import delite from '../app-goal-value/img/del.png';
 import ok from '../app-goal-value/img/ok.png';
-import AddButForm from '../app-add-button/app-add-button';
 import butPrior from '../app-goal-value/img/priorBut.png';
 import addIcon from '../app-goal-value/img/add.png';
-import priorBut from '../app-goal-value/img/priorBut.png';
+
 class ListGoals extends Component{
     constructor(props){
         super(props);
