@@ -39,7 +39,7 @@
     flex-direction: row;
 }
 .btn:hover{
-    background-color: #faf9f9;;
+    background-color: #faf9f9;
     border-radius: 12px;
     cursor: pointer;
     box-shadow: 3px 8px 8px rgba(27, 29, 227, 0.25);
