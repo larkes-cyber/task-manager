@@ -8,6 +8,8 @@ import Header from '../app-header-bar/app-header';
 import React, {Component} from 'react';
 import NextDay from '../app-my-next-day/app-my-day';
 import MainGoals from '../main-goals-app/main-goals-app';
+import AppMainGoals from '../app-main-goals/app-main-goals';
+
 
 class App extends Component{
 //zsg dffd g
@@ -268,6 +270,20 @@ class App extends Component{
 
   // Загружает текущую страницу
   onLoadPage=(page,flagMainHide)=>{
+
+    if(page === 'usually'){
+      return 
+    }
+
+    if(page === 'mainGoals'){
+      return (
+        <>
+          <Header name="Main Goals"/>
+          <AppMainGoals checkPage={this.checkPage}/>
+        </>
+      )
+    }
+
     if(page==='random'){
       return (
         <>

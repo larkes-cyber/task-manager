@@ -1,0 +1,51 @@
+
+@font-face {
+	font-family: 'consolas'; 
+	src: url('../../shrifts/consolas.ttf') 
+}
+
+.app-main-goals{
+    display: flex;
+  flex-wrap: wrap;
+  height: 100px;
+}
+
+.some-main-goal{
+    background: #FFFFFF;
+    border: 3px solid #F0F0F0;
+    box-shadow: 0px 4px 8px rgba(60, 42, 250, 0.15);
+    border-radius: 14px;
+    width: 370px;
+    margin-top: 3%;
+    margin-left: 3%;
+  
+}
+.forPress{
+    display: flex;
+    justify-content: space-between;
+    width: 315px;
+    margin-left: 3%;
+}
+.main-goal-name{
+    font-family: 'consolas';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 34px;
+    color: #000000;
+    width: 221px;
+    word-wrap: break-word;
+}
+
+.downImg{
+    width: 32px;
+    height: 32px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 0%;
+}
+.forImg{
+    width: 40px;
+    height: 40px;
+
+}
