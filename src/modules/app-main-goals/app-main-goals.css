@@ -5,9 +5,13 @@
 }
 
 .app-main-goals{
+   
+    margin-top: 3%;
+    margin-left: 3%;
     display: flex;
   flex-wrap: wrap;
-  height: 100px;
+  height: 30px;
+
 }
 
 .some-main-goal{
@@ -18,6 +22,9 @@
     width: 370px;
     margin-top: 3%;
     margin-left: 3%;
+    display: inline-block;
+    clear:both;
+    height: fit-content;
   
 }
 .forPress{
