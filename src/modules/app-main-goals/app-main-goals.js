@@ -117,15 +117,21 @@ const AppMainGoals = (props) => {
             nowGoal.className = "activeGoal";
 
             nowGoal.childNodes[1].className = 'partOfStatistics';
-            
+
+            nowGoal.childNodes[0].childNodes[2].className = 'downImg';
+
+
+
             openSorce(e);
         }
         else{
             nowGoal.className = "some-main-goal";
 
-            nowGoal.childNodes[1].className = 'hide';
+            nowGoal.childNodes[1].className = 'hideForStatic';
 
             const elem = nowGoal.childNodes[1].childNodes[1];
+
+            nowGoal.childNodes[0].childNodes[2].className = 'flipImg';
 
             elem.removeChild(elem.childNodes[0])
         }
@@ -145,11 +151,11 @@ const AppMainGoals = (props) => {
     const MainGoals = data.map(item => (
       <div className="some-main-goal" mainGoal = {item.id} onClick={changeActivity}>
           <div className='forPress'>
-              <img src={starImg} className="downImg forImg" alt="" />
+              <img src={starImg} className="flipImg" alt="" />
                <p className='main-goal-name'>{item.goal}</p>
-               <img src={down} className="downImg" alt="" />
+               <img src={down} className="flipImg" alt="" />
           </div>
-          <div className='hide'>
+          <div className='hideForStatic'>
             <div className="goalStat">complited goals: 14</div>
             <div className='containMain'></div>
             <div className='fixRem'>
