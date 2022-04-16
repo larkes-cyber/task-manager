@@ -5,13 +5,17 @@
 }
 
 .app-main-goals{
-   
-    margin-top: 3%;
-    margin-left: 3%;
+   width: 100%;
+    padding-top: 3%;
+    padding-left: 3%;
     display: flex;
   flex-wrap: wrap;
-  height: 30px;
-
+  height: 500px;
+overflow-y: scroll;
+background-color: white;
+border-bottom-width: 4px;
+border-bottom-color: #c0c0c0;
+border-bottom-style: solid;
 }
 
 
@@ -22,11 +26,12 @@
     box-shadow: 0px 4px 8px rgba(60, 42, 250, 0.15);
     border-radius: 14px;
     width: 370px;
-    margin-top: 3%;
+    margin-top: 0%;
     margin-left: 3%;
     display: inline-block;
-    clear:both;
+
     height: fit-content;
+    margin-top: 1%;
   
 }
 
@@ -94,5 +99,45 @@
 :hover.activeGoal{
     cursor: pointer;
     width: 472px;
-    box-shadow: 0px 14px 23px rgba(245, 5, 120, 0.45);
+    box-shadow: 0px 14px 23px rgba(21, 5, 245, 0.45);
+}
+.addButton{
+    margin-top: 3%;
+}
+.addBlockButton{
+    background: #FFFFFF;
+    border: 3px dashed rgba(60, 42, 250, 0.2);
+    box-sizing: border-box;
+    box-shadow: 0px 4px 8px rgba(60, 42, 250, 0.15);
+    border-radius: 14px;
+    width: 231px;
+    height: 114px;
+    display: flex;
+    flex-direction: row;
+    padding-left: 3%;
+margin-left: 4%;
+margin-top: 1%;
+}
+.iconForAddBlockButton{
+    width: 45px;
+    height: 45px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.textForAddBlockButton{
+    font-family: 'Consolas';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 36px;
+    color: #000000;
+    margin-left: 19%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+:hover.addBlockButton{
+    width: 232px;
+    height: 115px;
+    cursor: pointer;
+    box-shadow: 0px 14px 23px rgba(55, 37, 250, 0.45);
 }

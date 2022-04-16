@@ -5,6 +5,9 @@ import starImg from '../app-goal-value/img/images/star.png';
 import { useState } from 'react';
 import object from '../service/service';
 import Chart from 'chart.js/auto';
+import addButton from '../app-goal-value/img/images/addButtonMainGoal.png';
+import AddMainGoalForm from '../add-main-goal-form/add-main-goal-form';
+
 
 const AppMainGoals = (props) => {
 
@@ -156,7 +159,7 @@ const AppMainGoals = (props) => {
                <img src={down} className="flipImg" alt="" />
           </div>
           <div className='hideForStatic'>
-            <div className="goalStat">complited goals: 14</div>
+            <div className="goalStat">complited goals: {item.count}</div>
             <div className='containMain'></div>
             <div className='fixRem'>
                 <div className="goalMainRem">remove</div>
@@ -167,11 +170,18 @@ const AppMainGoals = (props) => {
 
     return(
         <div className='App'>
+            <AddMainGoalForm/>
             <div className='part'>
                <NavBar checkAttue={(e)=>props.checkPage(onAttue(e))}/>
-                <div className="app-main-goals">
-                  {MainGoals}
-                </div> 
+               <div>
+                   <div className="app-main-goals">
+                    {MainGoals}
+                    <div className='addBlockButton'>
+                        <img src={addButton} className='iconForAddBlockButton' alt="" />
+                        <p className='textForAddBlockButton'>Add</p>
+                    </div>
+                    </div>       
+               </div>
             </div>
         </div>
        
