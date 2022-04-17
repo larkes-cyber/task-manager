@@ -14,7 +14,7 @@
     padding-top: 2%;
 }
 .titleForAddMainGoal{
-    margin-top: 4%;
+    margin-top: 1%;
 
     font-family: 'consolas';
     font-style: bold;
@@ -131,4 +131,14 @@
     cursor: pointer;
     border: 1px solid #55FF99;
 
+}
+.cancelForMain{
+    width: 21px;
+    height: 21px;
+    margin-left: 80%;
+}
+:hover.cancelForMain{
+    cursor: pointer;
+    width: 23px;
+    height: 23px;
 }

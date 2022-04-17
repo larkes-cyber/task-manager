@@ -63,7 +63,7 @@
     margin-top: 8%;
     padding-top: 3%;
     overflow: auto; 
-    padding-left: 10%;
+
 }
 
 .childListNotComplitedGoals{
@@ -106,7 +106,7 @@
    border-style: none;
    margin-top: 2%;
    margin-bottom: 3%;
-   margin-left: 30%;
+   /* margin-left: 30%; */
 }
 .childListNotComplitedGoals{
     font-family: Consolas;

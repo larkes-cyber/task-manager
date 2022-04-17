@@ -13,6 +13,8 @@ const AppMainGoals = (props) => {
 
     const images = object;
     const [data, setData] = useState((localStorage.getItem('mainGoals')!=null)?JSON.parse(localStorage.getItem('mainGoals')):[])
+    const [onShowForm,setOnShowForm] = useState(false);
+
 
     const onAttue=(e)=>{
         return e.target.getAttribute('data-page');
@@ -170,13 +172,18 @@ const AppMainGoals = (props) => {
 
     return(
         <div className='App'>
-            <AddMainGoalForm/>
+            {onShowForm ? <AddMainGoalForm setOnShowForm = {(goals) => {
+               
+                if(goals != null) setData(goals);
+                setOnShowForm(false);
+                
+            }}/> : null}
             <div className='part'>
                <NavBar checkAttue={(e)=>props.checkPage(onAttue(e))}/>
                <div>
                    <div className="app-main-goals">
                     {MainGoals}
-                    <div className='addBlockButton'>
+                    <div className='addBlockButton' onClick={() => setOnShowForm(true)}>
                         <img src={addButton} className='iconForAddBlockButton' alt="" />
                         <p className='textForAddBlockButton'>Add</p>
                     </div>

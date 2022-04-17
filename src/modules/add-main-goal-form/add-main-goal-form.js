@@ -2,16 +2,63 @@ import './add-main-goal-form.css';
 import addImg from '../app-goal-value/img/images/addImgpng.png';
 import openImg from '../app-goal-value/img/images/open.png';
 import exampleImg from '../app-goal-value/img/images/star.png';
+import cancel from '../app-goal-value/img/cancel.png';
 import { useState } from 'react';
 import object from '../service/service';
 
-const AddMainGoalForm = () => {
+const AddMainGoalForm = (props) => {
 
     const [changeToImages, setChangeToImages] = useState(false);
     const [nowImg,setNowImg] = useState(0)
 
+    const addToMemory = (allData, id, goal, imgId = 1) => {
+
+        const newGoal = {
+            "id":id,
+            "goal":goal,
+            "count":0,
+            "idImg":imgId
+        }
+
+       const newDataOfMainGoals = [...allData, newGoal]
 
 
+
+
+       localStorage.setItem('mainGoals',JSON.stringify(newDataOfMainGoals));
+
+       return newDataOfMainGoals;
+
+    }
+
+
+    const addMainGoal = () => {
+
+        const data = (localStorage.getItem('mainGoals')!=null)?JSON.parse(localStorage.getItem('mainGoals')):[],
+              goal = document.querySelector('.inputForAddMainGoal').value;
+
+        let lastId = -1;
+        
+
+        console.log(data)
+
+        if(data.length !== 0){
+
+            lastId = data[data.length-1].id;
+
+
+        }
+
+
+        if(goal.length === 0) {
+            props.setOnShowForm(null);
+            return
+        }
+
+
+        props.setOnShowForm(addToMemory(data, lastId+1, goal));
+
+    }
 
 
     const clickOnIcon = (e) => {
@@ -21,15 +68,16 @@ const AddMainGoalForm = () => {
         });
 
         e.currentTarget.style.border = "1px solid #55FF99";
-        console.log()
+
     }
 
-//`expamplesOfImages`
 
     return (
         
         <div class="b-popup ">
+     
             <div class="content-for-add-main-goal">
+            <img src={cancel} className="cancelForMain" onClick = {() => props.setOnShowForm(null)} alt="" />
                 <h1 className='titleForAddMainGoal'>Your main goal:</h1>
                 <div className='contentWithImgAndForm'>
                     <div className='imagesForAddMainGoal'>
@@ -63,8 +111,7 @@ const AddMainGoalForm = () => {
                     
                     <input type="text" className='inputForAddMainGoal' />
                 </div>
-                
-                <button className='buttonForAddMainGoal'>add</button>
+                <button className='buttonForAddMainGoal' onClick = {addMainGoal}>add</button>
              </div>
         </div>
     )
