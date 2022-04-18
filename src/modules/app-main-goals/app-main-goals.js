@@ -56,7 +56,6 @@ const AppMainGoals = (props) => {
         arrayDate.forEach(item=>{
             outputStatic[item]=0;
         })
-        console.log(data);
         arrayDate.forEach(item=>{
             data.forEach(elem=>{
                 if(item===elem.date){
@@ -79,7 +78,6 @@ const AppMainGoals = (props) => {
             dataLabels.push(item);
             dataForLabels.push(data[item]);
         }
-        console.log(dataLabels,dataForLabels);
         const myChartes=document.createElement('canvas');
         myChartes.style.width="100px";
         myChartes.style.height="100px";
@@ -111,6 +109,23 @@ const AppMainGoals = (props) => {
             elem.append(myChartes);
     }
 
+
+    const removeMainGoal = (e) => {
+
+        const idGoalsToRemove = e.currentTarget.getAttribute("mainGoal");
+
+        let dataWithoutThisGoal = data;
+
+
+        dataWithoutThisGoal = dataWithoutThisGoal.filter(item => item.id !== +idGoalsToRemove);
+
+        localStorage.setItem('mainGoals',JSON.stringify(dataWithoutThisGoal));
+
+        setData(dataWithoutThisGoal);
+
+
+
+    }
 
 
     const changeActivity = (e) => {
@@ -164,7 +179,7 @@ const AppMainGoals = (props) => {
             <div className="goalStat">complited goals: {item.count}</div>
             <div className='containMain'></div>
             <div className='fixRem'>
-                <div className="goalMainRem">remove</div>
+                <div className="goalMainRem" mainGoal = {item.id} onClick={removeMainGoal}>remove</div>
             </div>
           </div>
       </div>
