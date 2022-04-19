@@ -154,6 +154,7 @@ class MainGoals extends Component{
             myChartes.style.height="400px";
             elem.append(myChartes);
     }
+
     openSorce=(e)=>{
         this.setState({
             data:(localStorage.getItem('mainGoals')!=null)?JSON.parse(localStorage.getItem('mainGoals')):[]
@@ -168,6 +169,7 @@ class MainGoals extends Component{
         e.target.parentNode.parentNode.childNodes[1].className='';
         e.target.parentNode.parentNode.className+=' forDiagramm';
         const id=e.target.parentNode.parentNode.getAttribute('mainGoal');
+        console.log(e.target.parentNode.parentNode)
        this.getDiagramm(id,e.target.parentNode.parentNode.childNodes[1].childNodes[1]);
 
     }
@@ -211,11 +213,7 @@ class MainGoals extends Component{
                             <img src={FavIcon} className='favIc' onClick={this.openSorce} alt="" />
                         </div>
                         <div className='noPacificContent bottomContent'>
-                            <div className={this.props.fix?"goalStat":"goalStatFix"}>complited goals: {sum}</div>
-                            <div className='containMain'></div>
-                            <div className='fixRem'>
-                                <div className={this.props.fix?"goalMainRem":"goalMainRemFix"} onClick={this.removeMainGoal}>remove</div>
-                            </div>
+                           
                         </div>  
                     </div>//goalStatFix  
                 ) 

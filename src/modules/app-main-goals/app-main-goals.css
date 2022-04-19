@@ -1,0 +1,143 @@
+
+@font-face {
+	font-family: 'consolas'; 
+	src: url('../../shrifts/consolas.ttf') 
+}
+
+.app-main-goals{
+   width: 100%;
+    padding-top: 3%;
+    padding-left: 3%;
+    display: flex;
+  flex-wrap: wrap;
+  height: 500px;
+overflow-y: scroll;
+background-color: white;
+border-bottom-width: 4px;
+border-bottom-color: #c0c0c0;
+border-bottom-style: solid;
+}
+
+
+
+.some-main-goal{
+    background: #FFFFFF;
+    border: 3px solid #F0F0F0;
+    box-shadow: 0px 4px 8px rgba(60, 42, 250, 0.15);
+    border-radius: 14px;
+    width: 370px;
+    margin-top: 0%;
+    margin-left: 3%;
+    display: inline-block;
+
+    height: fit-content;
+    margin-top: 1%;
+  
+}
+
+.activeGoal{
+    background: #FFFFFF;
+    border: 3px solid #F0F0F0;
+    box-shadow: 0px 4px 8px rgba(60, 42, 250, 0.15);
+    border-radius: 14px;
+    width: 470px;
+    margin-top: 3%;
+    margin-left: 3%;
+    display: inline-block;
+    clear:both;
+    height: fit-content;
+}
+.forPress{
+    display: flex;
+    justify-content: space-between;
+    width: 315px;
+    margin-left: 3%;
+}
+.main-goal-name{
+    font-family: 'consolas';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 34px;
+    color: #000000;
+    width: 221px;
+    word-wrap: break-word;
+}
+
+.downImg{
+    width: 32px;
+    height: 32px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 0%;
+    transform: rotate(180deg) scaleX(-1);
+}
+.forImg{
+    width: 40px;
+    height: 40px;
+}
+
+.flipImg{
+    width: 32px;
+    height: 32px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 0%;
+}
+
+.partOfStatistics{
+    margin-left: 13%;
+}
+.hideForStatic{
+    display: none;
+}
+:hover.some-main-goal{
+    cursor: pointer;
+    width: 373px;
+    box-shadow: 0px 14px 23px rgba(55, 37, 250, 0.45);
+}
+:hover.activeGoal{
+    cursor: pointer;
+    width: 472px;
+    box-shadow: 0px 14px 23px rgba(21, 5, 245, 0.45);
+}
+.addButton{
+    margin-top: 3%;
+}
+.addBlockButton{
+    background: #FFFFFF;
+    border: 3px dashed rgba(60, 42, 250, 0.2);
+    box-sizing: border-box;
+    box-shadow: 0px 4px 8px rgba(60, 42, 250, 0.15);
+    border-radius: 14px;
+    width: 231px;
+    height: 114px;
+    display: flex;
+    flex-direction: row;
+    padding-left: 3%;
+margin-left: 4%;
+margin-top: 1%;
+}
+.iconForAddBlockButton{
+    width: 45px;
+    height: 45px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.textForAddBlockButton{
+    font-family: 'Consolas';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 36px;
+    color: #000000;
+    margin-left: 19%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+:hover.addBlockButton{
+    width: 232px;
+    height: 115px;
+    cursor: pointer;
+    box-shadow: 0px 14px 23px rgba(55, 37, 250, 0.45);
+}
