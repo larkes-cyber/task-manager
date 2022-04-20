@@ -1,0 +1,130 @@
+@font-face {
+	font-family: 'Consolas'; 
+	src: url('../../shrifts/consolas.ttf');
+}
+@font-face {
+	font-family: 'WorkSans'; 
+	src: url('../../shrifts/WorkSans-Light.otf');
+}
+*{
+    font-family: Areal;
+}
+.b-container{
+    width:200px;
+    height:150px;
+    background-color: #ccc;
+    margin:0px auto;
+    padding:10px;
+    font-size:30px;
+    color: #fff;
+}
+.b-popup{
+    width:100%;
+    min-height:100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    position:fixed;
+    top:0px;
+    z-index: 210;
+}
+.b-popup .b-popup-content{
+    margin:30px auto 0px auto;
+    width: 600px;
+
+    background: #FFFFFF;
+    border: 3px solid #6B6B6B;
+    box-sizing: border-box;
+    box-shadow: 2px 9px 10px rgba(63, 33, 235, 0.5);
+    border-radius: 20px;
+    padding:10px;
+    box-shadow: 0px 0px 10px #000;
+}
+.b-popup-title{
+    font-family: Consolas;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 27px;
+    line-height: 49px;
+    width: 79%;
+    color: #000000;
+    margin-top: 6%;
+    margin-left: 10%;
+}
+.listNotComplitedGoals{
+    background: #FFFFFF;
+    border: 1px solid #757575;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 320px;
+    height: 115px;
+    padding-bottom: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8%;
+    padding-top: 3%;
+    overflow: auto; 
+
+}
+
+.childListNotComplitedGoals{
+
+}
+.alertMainBlockGoals{
+    display: flex;
+    flex-direction: row;
+    margin-top: -8%;
+    padding: 0%;
+}
+.alertMainBlockGoalsText{
+    font-family: Consolas;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 18px;
+    color: #000000;
+    margin-top: 12%;
+    margin-left: 3%;
+}
+.group-checkbox{
+    margin-left: 17%;
+
+    margin-top: 7%;
+    margin-bottom: 5%;
+}
+.ButSubmitAlert{
+    background: #3C2AFA;
+    box-shadow: 3px 6px 4px rgba(62, 27, 227, 0.25);
+    border-radius: 8px;
+    width: 180px;
+    height: 68px;
+    font-family:WorkSans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 27px;
+    line-height: 38px;
+    color: #FFFFFF;
+   border-style: none;
+   margin-top: 2%;
+   margin-bottom: 3%;
+   /* margin-left: 30%; */
+}
+.childListNotComplitedGoals{
+    font-family: Consolas;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 20px;
+    color: #000000;
+    margin-top: 4%;
+    /* or 80% */
+
+    /* margin-left: -37%;
+    
+     */
+     width: 300px;
+}
+:hover.ButSubmitAlert{
+    width: 182px;
+    height: 70px;
+    cursor: pointer;
+}

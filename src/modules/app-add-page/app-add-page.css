@@ -1,0 +1,73 @@
+
+@font-face {
+	font-family: 'Spartan'; 
+	src: url('../../shrifts/Spartan.ttf') 
+}
+.App {
+    text-align: center;
+   
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  .App-header {
+    background-color: #282c34;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  .appMain{
+    display: flex;
+    flex-direction: row;
+    overflow-x: hidden;
+    /* padding-bottom: 5%; */
+   /* // height: 100%; */
+   overflow-y: hidden;
+
+    
+  }
+  .formAlert{
+   height: 0px;
+   width: 0px;
+  }
+  .unPln{
+    font-family: Spartan;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 34px;
+    line-height: 47px;
+    margin-top: -1%;
+    margin-left: 12%;
+    color: #050101;
+  
+  }
+  .plns{
+    width: 540px;
+height: 400.54px;
+
+  }
+  .together{
+    display: flex;
+    margin-top: 19%;
+    margin-left: 26%;
+    height: 150%;
+  
+    width: 500px;
+  }
+  .fixNavAdd{
+    /* display: flex;
+    flex-direction: row; */
+    margin-top: -1%;
+    width: 75%;
+    margin-left: 12%;
+  }
